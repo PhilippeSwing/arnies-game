@@ -90,7 +90,14 @@ $(function () {
     const correctAnswers = [
         "commando",
         "ugly",
-
+        "wolfcastle",
+        "cloboomot",
+        "tumour",
+        "predator",
+        "cabeza",
+        "could",
+        "cares",
+        "running"
     ]
 
 
@@ -110,11 +117,12 @@ $(function () {
         // This variable holds the value of the input for the correct answer.
         const $correctAnswer1 = $('input[id="commando"]').val();
         // If the user's answer is correct, display/add the "right" image to the page and play the audio
-        if ($userAnswer1 === $correctAnswer1) {
+        // if ($userAnswer1 === $correctAnswer1) {
+        if ($.inArray($userAnswer1, correctAnswers) > -1) {
             // Add one point to total
             userPoints = userPoints + 1;
             // Play audio for right answer
-            $('.arnold-response1-audio').attr('src', './assets/audio/rightAnswer/good.mp3')[0].play();
+            $('.arnold-response-audio').attr('src', './assets/audio/rightAnswer/good.mp3')[0].play();
             // Store audio element in a variable
             // const $correctAudio = $('<audio>').attr('src', './assets/audio/rightAnswer/good.mp3');
 
@@ -124,15 +132,15 @@ $(function () {
             // Store arnold image in variable
             const $correctImage = $('<img>').attr('src', './assets/arnold-face/right-answer1.jpg');
             // Add image to page
-            $('.arnold-response1-image').html($correctImage);
+            $('.arnold-response-image').html($correctImage);
             // If the user's answer is incorrect, display/add the "wrong" image to the page and play the audio.
         } else {
             // Play audio for wrong answer
-            $('.arnold-response1-audio').attr('src', './assets/audio/wrongAnswer/noDeal.mp3')[0].play();
+            $('.arnold-response-audio').attr('src', './assets/audio/wrongAnswer/noDeal.mp3')[0].play();
             // Store arnold image in variable
             const $wrongImage = $('<img>').attr('src', './assets/arnold-face/wrong-answer1.jpg');
             // Add image to page
-            $('.arnold-response1-image').html($wrongImage);
+            $('.arnold-response-image').html($wrongImage);
         }
         // Store the first question's section element in a variable
         let $currentSection = $(".question-container").first();
@@ -145,10 +153,25 @@ $(function () {
                 $('html, body').stop(true).animate({
                     scrollTop: $nextSection.offset().top
                 }, 1500);
+            } else {
+                return false;
             }
-            return false;
+            $('input').prop("checked", false);
         }, 1000);
+
     });
+
+    // Soundboard Buttons
+    $('.choppa-button').on('click', function (e) {
+        e.preventDefault();
+        $('.choppa-audio')[0].play();
+    });
+
+    $('.zero-button').on('click', function (e) {
+        e.preventDefault();
+        $('.zero-audio')[0].play();
+    });
+
 
 });
 
