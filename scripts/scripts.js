@@ -43,17 +43,65 @@
 // 1. Playing audio and video
 // 2. Storing points in a variable?
 
-// MVP2 - "Quit Game" button with audio clip
+// MVP2 - Store all question html in an array of objects and have them display dynamically
+
+// MVP3 - One question has a textarea where users enter as many arnold movie titles as they can think of (use one key word and separate by comma). SetTimeout for them before runnig a function that end sthe question.Turn that string into an array of strings to compare with my array list.
+
+// MVP4 - "Quit Game" button with audio clip
 // ========================
 
-// MVP3 - On click of arnold image, play audio clip "Stop it!"
+// MVP5 - On click of arnold image, play audio clip "Stop it!"
 // ========================
 
-// MVP4 - On click of "Play a Different Game" button, play audio clip "I don't play that game"
+// MVP6 - On click of "Play a Different Game" button, play audio clip "I don't play that game"
 // ========================
-let userPoints = 0;
+
 
 $(function () {
+    // Set user points variable
+    let userPoints = 0;
+
+    // An array of object, each holding a question and its answers
+    // const questions = [
+    //     {
+    //         question1: "In 1985, I played a retired Special Forces soldier who rescues Alyssa Milano from a puny weakling who wears a chainmail vest.",
+    //         answer1:,
+    //         answer2:,
+    //         answer3:,
+    //         answer4:
+    //     },
+    //     {
+    //         question2:,
+    //         answer1:,
+    //         answer2:,
+    //         answer3:,
+    //         answer4:
+    //     },
+    //     {
+    //         question3:,
+    //         answer1:,
+    //         answer2:,
+    //         answer3:,
+    //         answer4:
+    //     },
+    // ]
+
+    // Array of correct answers
+    const correctAnswers = [
+        "commando",
+        "ugly",
+
+    ]
+
+
+
+
+
+
+
+
+
+
     // Question #1
     $('.commando-form').on('submit', function (e) {
         e.preventDefault();
@@ -66,7 +114,7 @@ $(function () {
             // Add one point to total
             userPoints = userPoints + 1;
             // Play audio for right answer
-            $('.arnold-response1-audio-right')[0].play();
+            $('.arnold-response1-audio').attr('src', './assets/audio/rightAnswer/good.mp3')[0].play();
             // Store audio element in a variable
             // const $correctAudio = $('<audio>').attr('src', './assets/audio/rightAnswer/good.mp3');
 
@@ -80,7 +128,7 @@ $(function () {
             // If the user's answer is incorrect, display/add the "wrong" image to the page and play the audio.
         } else {
             // Play audio for wrong answer
-            $('.arnold-response1-audio-wrong')[0].play();
+            $('.arnold-response1-audio').attr('src', './assets/audio/wrongAnswer/noDeal.mp3')[0].play();
             // Store arnold image in variable
             const $wrongImage = $('<img>').attr('src', './assets/arnold-face/wrong-answer1.jpg');
             // Add image to page
