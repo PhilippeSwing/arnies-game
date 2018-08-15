@@ -57,35 +57,40 @@
 // MVP6 - On click of "Play a Different Game" button, play audio clip "I don't play that game"
 // ========================
 
+// An array of object, each holding a question and its answers
+// const questions = [
+//     {
+//         question1: "In 1985, I played a retired Special Forces soldier who rescues Alyssa Milano from a puny weakling who wears a chainmail vest.",
+//         answer1:,
+//         answer2:,
+//         answer3:,
+//         answer4:
+//     },
+//     {
+//         question2:,
+//         answer1:,
+//         answer2:,
+//         answer3:,
+//         answer4:
+//     },
+//     {
+//         question3:,
+//         answer1:,
+//         answer2:,
+//         answer3:,
+//         answer4:
+//     },
+// ]
+
+// 1. Create the namespace(name of the app object)
+// 2. Store variable in your pp object
+// 3. Everythig else, i.e.loops, event listeners, are stored in a function that is then added to your app object. This makes them methods on your app object.
+// 4. Create your initialization method, i.e. init(), on the app object.
 
 $(function () {
     // Set user points variable
     let userPoints = 0;
 
-    // An array of object, each holding a question and its answers
-    // const questions = [
-    //     {
-    //         question1: "In 1985, I played a retired Special Forces soldier who rescues Alyssa Milano from a puny weakling who wears a chainmail vest.",
-    //         answer1:,
-    //         answer2:,
-    //         answer3:,
-    //         answer4:
-    //     },
-    //     {
-    //         question2:,
-    //         answer1:,
-    //         answer2:,
-    //         answer3:,
-    //         answer4:
-    //     },
-    //     {
-    //         question3:,
-    //         answer1:,
-    //         answer2:,
-    //         answer3:,
-    //         answer4:
-    //     },
-    // ]
 
     // Array of correct answers
     const correctAnswers = [
@@ -126,60 +131,79 @@ $(function () {
     }
 
     // Questions Form Submit
-    $('form').on('submit', function (e) {
+    $('.button').on('click', function (e) {
         e.preventDefault();
-        // This variable holds the correct answer value selected by the user
-        // const $userAnswer1 = $('input[name="commando"]:checked').val();
-        const $userAnswer = $(this).find('input:checked').val();
-        console.log($userAnswer);
-        // This variable holds the value of the input for the correct answer.
-        const $correctAnswer1 = $('input[id="commando"]').val();
-        // If the user's answer is correct, display/add the "right" image to the page and play the audio
-        // if ($userAnswer1 === $correctAnswer1) {
-        if ($.inArray($userAnswer, correctAnswers) > -1) {
-            // Add one point to total
-            userPoints = userPoints + 1;
-            // Play audio for right answer
-            const randomRightAudio = randomArrayValue(rightAnswerAudio);
-            $('.arnold-response-audio').attr('src', randomRightAudio)[0].play();
-            // Store audio element in a variable
-            // const $correctAudio = $('<audio>').attr('src', './assets/audio/rightAnswer/good.mp3');
+        if ($(this).hasClass('start-game-button')) {
+            $('.video-questions').removeClass('hide').attr('autoplay', true); // .get(0).play();
 
-            // Add audio element to page
-            // $('.arnold-response1-audio').html(`<audio src="./assets/audio/rightAnswer/good.mp3" class="apples"></audio>`)[0].play();
+            let $currentSection = $(this).parents('.scroll-section');
+            console.log($currentSection);
+            // Store the next question's section element in a variable
+            let $nextSection = $('#one');
+            console.log($nextSection);
+            $('html, body').stop(true).animate({
+                scrollTop: $nextSection.offset().top
+            }, 1500);
 
-            // Store arnold image in variable
-            const $correctImage = $('<img>').attr('src', './assets/arnold-face/right-answer1.jpg');
-            // Add image to page
-            $('.arnold-response-image').html($correctImage);
-            // If the user's answer is incorrect, display/add the "wrong" image to the page and play the audio.
+            setTimeout(function () {
+                $('.video-questions').addClass('hide');
+            }, 5100)
+
         } else {
-            // Play audio for wrong answer
-            const randomWrongAudio = randomArrayValue(wrongAnswerAudio);
-            $('.arnold-response-audio').attr('src', randomWrongAudio)[0].play();
-            // Store arnold image in variable
-            const $wrongImage = $('<img>').attr('src', './assets/arnold-face/wrong-answer1.jpg');
-            // Add image to page
-            $('.arnold-response-image').html($wrongImage);
-        }
-        // Store the first question's section element in a variable
-        let $currentSection = $(".question-container").first();
-        // Store the next question's section element in a variable
-        let $nextSection = $currentSection.next('.question-container');
-        // After some time (allowing audio to play), check if another queston exists. If it does, the next section element is stored in the $currentSection variable. The stop(true) stops any animation I might have running but for now it doesn't apply. animate() includes scollTop
-        setTimeout(function () {
-            if ($nextSection.length) {
-                $currentSection = $nextSection;
-                $('html, body').stop(true).animate({
-                    scrollTop: $nextSection.offset().top
-                }, 1500);
-            } else {
-                return false;
-            }
-            $('input').prop("checked", false);
-        }, 1000);
-        console.log(userPoints);
+            // This variable holds the correct answer value selected by the user
+            // const $userAnswer1 = $('input[name="commando"]:checked').val();
+            const $userAnswer = $(this).find('input:checked').val();
+            console.log($userAnswer);
+            // This variable holds the value of the input for the correct answer.
+            const $correctAnswer1 = $('input[id="commando"]').val();
+            // If the user's answer is correct, display/add the "right" image to the page and play the audio
+            // if ($userAnswer1 === $correctAnswer1) {
+            if ($.inArray($userAnswer, correctAnswers) > -1) {
+                // Add one point to total
+                userPoints = userPoints + 1;
+                // Play audio for right answer
+                const randomRightAudio = randomArrayValue(rightAnswerAudio);
+                $('.arnold-response-audio').attr('src', randomRightAudio)[0].play();
+                // Store audio element in a variable
+                // const $correctAudio = $('<audio>').attr('src', './assets/audio/rightAnswer/good.mp3');
 
+                // Add audio element to page
+                // $('.arnold-response1-audio').html(`<audio src="./assets/audio/rightAnswer/good.mp3" class="apples"></audio>`)[0].play();
+
+                // Store arnold image in variable
+                const $correctImage = $('<img>').attr('src', './assets/arnold-face/right-answer1.jpg');
+                // Add image to page
+                $('.arnold-response-image').html($correctImage);
+                // If the user's answer is incorrect, display/add the "wrong" image to the page and play the audio.
+            } else {
+                // Play audio for wrong answer
+                const randomWrongAudio = randomArrayValue(wrongAnswerAudio);
+                $('.arnold-response-audio').attr('src', randomWrongAudio)[0].play();
+                // Store arnold image in variable
+                const $wrongImage = $('<img>').attr('src', './assets/arnold-face/wrong-answer1.jpg');
+                // Add image to page
+                $('.arnold-response-image').html($wrongImage);
+            }
+            // Store the first question's section element in a variable
+            let $currentSection = $(this).parents('.scroll-section');
+            console.log($currentSection);
+            // Store the next question's section element in a variable
+            let $nextSection = $currentSection.next('.scroll-section');
+            console.log($nextSection);
+            // After some time (allowing audio to play), check if another queston exists. If it does, the next section element is stored in the $currentSection variable. The stop(true) stops any animation I might have running but for now it doesn't apply. animate() includes scollTop
+            setTimeout(function () {
+                if ($nextSection.length) {
+                    // $currentSection = $nextSection;
+                    $('html, body').stop(true).animate({
+                        scrollTop: $nextSection.offset().top
+                    }, 1500);
+                } else {
+                    return false;
+                }
+                $('input').prop("checked", false);
+            }, 1000);
+            console.log(userPoints);
+        }
     });
     // ========================
 

@@ -132,8 +132,17 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+h1 {
+  margin: 0; }
+
 html {
   font-size: 62.5%; }
+
+.hero {
+  height: 100vh;
+  background: lightgray url("../assets/arnold-face/hero1.jpg") right no-repeat;
+  background-size: cover;
+  position: relative; }
 
 .question-container {
   max-height: 100vh;
@@ -141,5 +150,13 @@ html {
 
 .question-container:first-child {
   margin-top: 0; }
+
+.hide {
+  display: none; }
+
+video {
+  position: fixed;
+  top: 0;
+  left: 0; }
 
 /*# sourceMappingURL=styles.css.map */
