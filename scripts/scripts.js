@@ -42,6 +42,7 @@
 // ???
 // 1. Playing audio and video
 // 2. Storing points in a variable?
+// 3. Quit Button and Play Again button at end
 
 // MVP2 - Store all question html in an array of objects and have them display dynamically
 
@@ -99,30 +100,48 @@ $(function () {
         "cares",
         "running"
     ]
+    // Array of audio file paths for right answers
+    const rightAnswerAudio = [
+        "./assets/audio/rightAnswer/good.mp3",
+        "./assets/audio/rightAnswer/no-problemo.mp3",
+        "./assets/audio/rightAnswer/thatsAmazingReally.mp3",
+        "./assets/audio/rightAnswer/yeah.mp3"
+    ]
+    // Array of audio file paths for wrong answers
+    const wrongAnswerAudio = [
+        "./assets/audio/wrongAnswer/deep-trouble.wav",
+        "./assets/audio/wrongAnswer/don'tBeRidiculous.mp3",
+        "./assets/audio/wrongAnswer/imSmartUnlikeSomeoneWeKnow.mp3",
+        "./assets/audio/wrongAnswer/no1.wav",
+        "./assets/audio/wrongAnswer/no2.wav",
+        "./assets/audio/wrongAnswer/noDeal.mp3",
+        "./assets/audio/wrongAnswer/noItsNotTrue.mp3",
+        "./assets/audio/wrongAnswer/whatsTheMatter.mp3",
+        "./assets/audio/wrongAnswer/whatTheHellWereYouThinking.mp3",
+        "./assets/audio/wrongAnswer/wrong.mp3"
+    ]
+    // Random Array Value
+    const randomArrayValue = (array) => {
+        return array[Math.floor(Math.random() * array.length)];
+    }
 
-
-
-
-
-
-
-
-
-
-    // Question #1
-    $('.commando-form').on('submit', function (e) {
+    // Questions Form Submit
+    $('form').on('submit', function (e) {
         e.preventDefault();
         // This variable holds the correct answer value selected by the user
-        const $userAnswer1 = $('input[name="commando"]:checked').val();
+        // const $userAnswer1 = $('input[name="commando"]:checked').val();
+        const $userAnswer = $(this).find('input:checked').val();
+        console.log($userAnswer);
         // This variable holds the value of the input for the correct answer.
         const $correctAnswer1 = $('input[id="commando"]').val();
         // If the user's answer is correct, display/add the "right" image to the page and play the audio
         // if ($userAnswer1 === $correctAnswer1) {
-        if ($.inArray($userAnswer1, correctAnswers) > -1) {
+        if ($.inArray($userAnswer, correctAnswers) > -1) {
             // Add one point to total
             userPoints = userPoints + 1;
             // Play audio for right answer
-            $('.arnold-response-audio').attr('src', './assets/audio/rightAnswer/good.mp3')[0].play();
+            const randomRightAudio = randomArrayValue(rightAnswerAudio);
+            $('.arnold-response-audio').attr('src', randomRightAudio)[0].play();
             // Store audio element in a variable
             // const $correctAudio = $('<audio>').attr('src', './assets/audio/rightAnswer/good.mp3');
 
@@ -136,7 +155,8 @@ $(function () {
             // If the user's answer is incorrect, display/add the "wrong" image to the page and play the audio.
         } else {
             // Play audio for wrong answer
-            $('.arnold-response-audio').attr('src', './assets/audio/wrongAnswer/noDeal.mp3')[0].play();
+            const randomWrongAudio = randomArrayValue(wrongAnswerAudio);
+            $('.arnold-response-audio').attr('src', randomWrongAudio)[0].play();
             // Store arnold image in variable
             const $wrongImage = $('<img>').attr('src', './assets/arnold-face/wrong-answer1.jpg');
             // Add image to page
@@ -158,9 +178,12 @@ $(function () {
             }
             $('input').prop("checked", false);
         }, 1000);
+        console.log(userPoints);
 
     });
+    // ========================
 
+    // ========================
     // Soundboard Buttons
     $('.choppa-button').on('click', function (e) {
         e.preventDefault();
@@ -170,6 +193,25 @@ $(function () {
     $('.zero-button').on('click', function (e) {
         e.preventDefault();
         $('.zero-audio')[0].play();
+    });
+    // ========================
+
+    // ========================
+    // Game Results
+    $('.results-button').on('click', function (e) {
+        e.preventDefault();
+        console.log('it works');
+        // Results - Put text and maybe image on page. Play final audio
+        if (userPoints >= 9) {
+            $('.results-header').text(`Well done! You terminated this game by answering ${userPoints} questions correctly.`);
+            $('.arnold-response-audio').attr('src', './assets/audio/game-results/illBeBack.mp3')[0].play();
+        } else if (userPoints < 9 && userPoints >= 5) {
+            $('.results-header').text(`Not bad! You answered ${userPoints} questions correctly. Watch five more 80s action movie montages and try again.`);
+            $('.arnold-response-audio').attr('src', './assets/audio/game-results/illBeBack.mp3')[0].play();
+        } else {
+            $('.results-header').text(`You're a puny weakling by only answering ${userPoints} correctly! Keep training and try again.`);
+            $('.arnold-response-audio').attr('src', './assets/audio/game-results/lack-discipline.wav')[0].play();
+        }
     });
 
 
