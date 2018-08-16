@@ -141,7 +141,7 @@ $(function () {
     $('.button').on('click', function (e) {
         e.preventDefault();
         if ($(this).hasClass('start-game-button')) {
-            $('.video-questions').removeClass('hide').attr('autoplay', true); // .get(0).play();
+            $('.video-questions').fadeIn().removeClass('hide').attr('autoplay', true); // .get(0).play();
 
             let $currentSection = $(this).parents('.scroll-section');
             console.log($currentSection);
@@ -153,7 +153,7 @@ $(function () {
             }, 1500);
 
             setTimeout(function () {
-                $('.video-questions').addClass('hide');
+                $('.video-questions').addClass('hide').fadeOut();  // .pause().attr('currentTime', 0);
             }, 5100)
 
         } else {  //if (!$(this).hasClass('start-game-button')) 
