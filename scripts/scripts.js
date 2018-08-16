@@ -125,6 +125,13 @@ $(function () {
         "./assets/audio/wrongAnswer/whatTheHellWereYouThinking.mp3",
         "./assets/audio/wrongAnswer/wrong.mp3"
     ]
+
+    const quitGameAudio = [
+        "./assets/audio/quitGame/iveGotNewsForYouYourMineNow.mp3",
+        "./assets/audio/quitGame/stopIt.mp3",
+        "./assets/audio/quitGame/stopWhining.mp3"
+    ]
+
     // Random Array Value
     const randomArrayValue = (array) => {
         return array[Math.floor(Math.random() * array.length)];
@@ -139,7 +146,7 @@ $(function () {
             let $currentSection = $(this).parents('.scroll-section');
             console.log($currentSection);
             // Store the next question's section element in a variable
-            let $nextSection = $('#one');
+            let $nextSection = $('#question1');
             console.log($nextSection);
             $('html, body').stop(true).animate({
                 scrollTop: $nextSection.offset().top
@@ -149,10 +156,10 @@ $(function () {
                 $('.video-questions').addClass('hide');
             }, 5100)
 
-        } else {
+        } else {  //if (!$(this).hasClass('start-game-button')) 
             // This variable holds the correct answer value selected by the user
             // const $userAnswer1 = $('input[name="commando"]:checked').val();
-            const $userAnswer = $(this).find('input:checked').val();
+            const $userAnswer = $(this).parents('form').find('input:checked').val();
             console.log($userAnswer);
             // This variable holds the value of the input for the correct answer.
             const $correctAnswer1 = $('input[id="commando"]').val();
@@ -184,6 +191,7 @@ $(function () {
                 // Add image to page
                 $('.arnold-response-image').html($wrongImage);
             }
+            console.log(userPoints);
             // Store the first question's section element in a variable
             let $currentSection = $(this).parents('.scroll-section');
             console.log($currentSection);
@@ -211,21 +219,22 @@ $(function () {
     // Soundboard Buttons
     $('.choppa-button').on('click', function (e) {
         e.preventDefault();
-        $('.choppa-audio')[0].play();
+        $('.arnold-response-audio').attr('src', './assets/audio/quotes/choppa.mp3')[0].play();
     });
 
     $('.zero-button').on('click', function (e) {
         e.preventDefault();
-        $('.zero-audio')[0].play();
+        $('.arnold-response-audio').attr('src', './assets/audio/quotes/sub-zero.mp3')[0].play();
     });
     // ========================
 
     // ========================
     // Game Results
+    // ==Display Buttons==
     const displayResultsButtons = () => {
         const $playAgain = $('<a>').attr({
             class: "button-play-again",
-            href: "#"
+            href: "#question1"
         }).text("Play Again!");
 
         const $giveUp = $('<a>').attr({
@@ -238,7 +247,6 @@ $(function () {
 
     $('.results-button').on('click', function (e) {
         e.preventDefault();
-        console.log('it works');
         // Results - Put text and maybe image on page. Play final audio
         if (userPoints >= 9) {
             $('.results-header').text(`Well done! You terminated this game by answering ${userPoints} questions correctly.`);
@@ -251,6 +259,18 @@ $(function () {
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/lack-discipline.wav')[0].play();
         }
         displayResultsButtons();
+    });
+    // ==Results Buttons Functionality==
+    $('.play-again-buttons-container').on('click', '.button-give-up', function (e) {
+        e.preventDefault();
+        const randomQuitAudio = randomArrayValue(quitGameAudio);
+        $('.arnold-response-audio').attr('src', randomQuitAudio)[0].play();
+    });
+
+    $('.play-again-buttons-container').on('click', '.button-play-again', function (e) {
+        // e.preventDefault();
+        userPoints = 0;
+        console.log(userPoints);
     });
 
 });
