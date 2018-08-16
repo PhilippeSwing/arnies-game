@@ -27,8 +27,10 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 h1 {
     margin: 0;
+    padding: 150px 0 0 0;
     font-family: 'Terminator Real NFI', 'Merriweather', serif;
-    font-size: 7rem;
+    font-size: 9rem;
+    text-align: right;
     width: 50%; //Delete this and use padding
     // color: #cc0000;
 }
