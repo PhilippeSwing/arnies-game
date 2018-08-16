@@ -54,7 +54,7 @@
 // MVP5 - On click of arnold image, play audio clip "Stop it!"
 // ========================
 
-// MVP6 - On click of "Play a Different Game" button, play audio clip "I don't play that game"
+// MVP6 - On click of "Play Online Poker" button, play audio clip "I don't play that game"
 // ========================
 
 // An array of object, each holding a question and its answers
@@ -141,20 +141,22 @@ $(function () {
     $('.button').on('click', function (e) {
         e.preventDefault();
         if ($(this).hasClass('start-game-button')) {
-            $('.video-questions').fadeIn().removeClass('hide').attr('autoplay', true); // .get(0).play();
-
-            let $currentSection = $(this).parents('.scroll-section');
-            console.log($currentSection);
-            // Store the next question's section element in a variable
-            let $nextSection = $('#question1');
-            console.log($nextSection);
-            $('html, body').stop(true).animate({
-                scrollTop: $nextSection.offset().top
-            }, 1500);
+            $('.video-questions').fadeIn(900).removeClass('hide').attr('autoplay', true); // .get(0).play();
 
             setTimeout(function () {
-                $('.video-questions').addClass('hide').fadeOut();  // .pause().attr('currentTime', 0);
+                $('.video-questions').addClass('hide').fadeOut(900);  // .pause().attr('currentTime', 0);
+
+                let $currentSection = $(this).parents('.scroll-section');
+                console.log($currentSection);
+                // Store the next question's section element in a variable
+                let $nextSection = $('#question1');
+                console.log($nextSection);
+                $('html, body').stop(true).animate({
+                    scrollTop: $nextSection.offset().top
+                }, 1500);
             }, 5100)
+
+
 
         } else {  //if (!$(this).hasClass('start-game-button')) 
             // This variable holds the correct answer value selected by the user
@@ -242,7 +244,12 @@ $(function () {
             href: "#"
         }).text("Give Up");
 
-        $('.play-again-buttons-container').append($playAgain, $giveUp);
+        const $poker = $('<a>').attr({
+            class: "button-poker",
+            href: "#"
+        }).text("Play Online Poker");
+
+        $('.play-again-buttons-container').append($playAgain, $giveUp, $poker);
     };
 
     $('.results-button').on('click', function (e) {
@@ -271,7 +278,16 @@ $(function () {
         // e.preventDefault();
         userPoints = 0;
         console.log(userPoints);
+        $('.results-header').text("");
+        $('.button-give-up').detach();
+        $('.button-play-again').detach();
     });
+
+    $('.play-again-buttons-container').on('click', '.button-poker', function (e) {
+        e.preventDefault();
+        $('.arnold-response-audio').attr('src', './assets/audio/poker/iDontPlayThatGame.mp3')[0].play();
+    });
+
 
 });
 
