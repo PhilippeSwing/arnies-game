@@ -132,17 +132,60 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+@font-face {
+  font-family: 'Terminator Real NFI';
+  src: url("../assets/fonts/terminator real nfi.otf");
+  src: url("../assets/fonts/terminator real nfi.ttf"); }
+
 h1 {
-  margin: 0; }
+  margin: 0;
+  font-family: 'Terminator Real NFI', 'Merriweather', serif;
+  font-size: 7rem;
+  width: 50%; }
+
+h2 {
+  font-family: 'Brawler', serif;
+  text-transform: uppercase;
+  border: 2px solid black;
+  border-radius: 2px;
+  display: inline-block; }
+
+label {
+  font-family: 'Source Sans Pro', sans-serif; }
+
+legend {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #222222; }
 
 html {
   font-size: 62.5%; }
 
-.hero {
+.main {
+  background-color: #888bac; }
+
+.wrapper-prim {
+  max-width: 1440px;
+  margin: 0 auto; }
+
+.wrapper-sec {
+  max-width: 1200px;
+  margin: 0 auto; }
+
+a {
+  background-color: #ff7a22;
+  padding: 20px 30px;
+  border-style: inset;
+  border-radius: 5px; }
+
+.header {
   height: 100vh;
-  background: lightgray url("../assets/arnold-face/hero1.jpg") right no-repeat;
-  background-size: cover;
+  background-color: #888bac;
   position: relative; }
+
+.header-content-container {
+  height: 100vh;
+  background: transparent url("../assets/arnold-face/hero2.png") right no-repeat;
+  background-size: contain; }
 
 .question-container {
   max-height: 100vh;
@@ -150,6 +193,13 @@ html {
 
 .question-container:first-child {
   margin-top: 0; }
+
+.arnold-head-image-container {
+  width: 20%; }
+
+.arnold-head-image {
+  display: block;
+  width: 100%; }
 
 .hide {
   display: none; }

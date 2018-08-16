@@ -173,25 +173,24 @@ $(function () {
                 // Play audio for right answer
                 const randomRightAudio = randomArrayValue(rightAnswerAudio);
                 $('.arnold-response-audio').attr('src', randomRightAudio)[0].play();
-                // Store audio element in a variable
-                // const $correctAudio = $('<audio>').attr('src', './assets/audio/rightAnswer/good.mp3');
-
-                // Add audio element to page
-                // $('.arnold-response1-audio').html(`<audio src="./assets/audio/rightAnswer/good.mp3" class="apples"></audio>`)[0].play();
+                // Set image attribute to right answer image
+                $(this).parents('.question-container').find('.arnold-head-image').attr('src', './assets/arnold-face/right-answer3.jpg');
 
                 // Store arnold image in variable
-                const $correctImage = $('<img>').attr('src', './assets/arnold-face/right-answer1.jpg');
+                // const $correctImage = $('<img>').attr('src', './assets/arnold-face/right-answer1.jpg');
                 // Add image to page
-                $('.arnold-response-image').html($correctImage);
+                // $('.arnold-head-image-container').html($correctImage);
                 // If the user's answer is incorrect, display/add the "wrong" image to the page and play the audio.
             } else {
                 // Play audio for wrong answer
                 const randomWrongAudio = randomArrayValue(wrongAnswerAudio);
                 $('.arnold-response-audio').attr('src', randomWrongAudio)[0].play();
+                // Set image attribute to wrong answer image
+                $(this).parents('.question-container').find('.arnold-head-image').attr('src', './assets/arnold-face/wrong-answer4.jpg');
                 // Store arnold image in variable
-                const $wrongImage = $('<img>').attr('src', './assets/arnold-face/wrong-answer1.jpg');
+                // const $wrongImage = $('<img>').attr('src', './assets/arnold-face/wrong-answer1.jpg');
                 // Add image to page
-                $('.arnold-response-image').html($wrongImage);
+                // $('.arnold-head-image-container').html($wrongImage);
             }
             console.log(userPoints);
             // Store the first question's section element in a variable
@@ -210,6 +209,7 @@ $(function () {
                 } else {
                     return false;
                 }
+                // Remove check from checkbox
                 $('input').prop("checked", false);
             }, 1000);
             console.log(userPoints);
@@ -262,7 +262,7 @@ $(function () {
             $('.results-header').text(`Not bad! You answered ${userPoints} questions correctly. Watch five more 80s action movie montages and try again.`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/illBeBack.mp3')[0].play();
         } else {
-            $('.results-header').text(`You're a puny weakling by only answering ${userPoints} correctly! Keep training and try again.`);
+            $('.results-header').text(`You're a puny weakling with only ${userPoints} correct answers! Keep training and try again.`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/lack-discipline.wav')[0].play();
         }
         displayResultsButtons();
@@ -275,7 +275,8 @@ $(function () {
     });
 
     $('.play-again-buttons-container').on('click', '.button-play-again', function (e) {
-        // e.preventDefault();
+        // Set image attribute to default neutral face image
+        $('.arnold-head-image').fadeIn().attr('src', './assets/arnold-face/neutral-face.png');
         userPoints = 0;
         console.log(userPoints);
         $('.results-header').text("");
