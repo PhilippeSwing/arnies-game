@@ -222,6 +222,20 @@ $(function () {
 
     // ========================
     // Game Results
+    const displayResultsButtons = () => {
+        const $playAgain = $('<a>').attr({
+            class: "button-play-again",
+            href: "#"
+        }).text("Play Again!");
+
+        const $giveUp = $('<a>').attr({
+            class: "button-give-up",
+            href: "#"
+        }).text("Give Up");
+
+        $('.play-again-buttons-container').append($playAgain, $giveUp);
+    };
+
     $('.results-button').on('click', function (e) {
         e.preventDefault();
         console.log('it works');
@@ -236,8 +250,8 @@ $(function () {
             $('.results-header').text(`You're a puny weakling by only answering ${userPoints} correctly! Keep training and try again.`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/lack-discipline.wav')[0].play();
         }
+        displayResultsButtons();
     });
-
 
 });
 
