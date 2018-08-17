@@ -14,6 +14,46 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 // ========================
 
 // ========================
+// GENERAL STYLES STARTS
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+    // color: #222222;
+    color: #282828;
+}
+
+.main {
+    background-color: #888bac;
+}
+
+.wrapper-prim {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.wrapper-sec {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.button-prim {
+    background-color: #ff5600;     // hsl(22, 100%, 50%);
+    // padding: 20px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: inherit;
+    font-size: 2rem;
+    display: inline-block;
+    text-align: center;
+    // width: 10%;
+}
+// GENERAL STYLES ENDS
+// ========================
+
+// ========================
 // TYPOGRAPHY STARTS
 @font-face {
     font-family: 'Terminator Real NFI';
@@ -30,8 +70,8 @@ h1 {
     padding: 150px 0 0 0;
     font-family: 'Terminator Real NFI', 'Merriweather', serif;
     font-size: 9rem;
-    text-align: right;
-    width: 50%; //Delete this and use padding
+    // text-align: center;
+    // width: 50%; //Delete this and use padding
     // color: #cc0000;
 }
 
@@ -43,60 +83,20 @@ h2 {
     display: inline-block;
 }
 
-label {
-    font-family: 'Source Sans Pro', sans-serif;
-}
+// label {
+//     font-family: 'Source Sans Pro', sans-serif;
+// }
 
-legend {
-    font-family: 'Source Sans Pro', sans-serif;
-    color: #222222;
-}
+// legend {
+//     font-family: 'Source Sans Pro', sans-serif;
+//     color: #222222;
+// }
 // TYPOGRAPHY ENDS
 // ========================
 
-// ========================
-// GENERAL STYLES STARTS
-html {
-    font-size: 62.5%;
-}
 
-body {
-    // font-family: ??
-    // font-color: ??
-}
 
-.main {
-    background-color: #888bac;
-}
 
-.wrapper-prim {
-    max-width: 1440px;
-    margin: 0 auto;
-}
-
-.wrapper-sec {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-a {
-    background-color: #ff7a22;
-    padding: 20px 30px;
-    border-style: inset;
-    border-radius: 5px;
-}
-
-.header {
-    height: 100vh;
-    background-color: #888bac;
-    position: relative;
-}
-
-.header-content-container {
-    height: 100vh;
-    background: transparent url('../assets/arnold-face/hero2.png') right no-repeat;
-    background-size: contain;
-}
 
 .question-container {
     max-height: 100vh;
@@ -134,6 +134,7 @@ video {
     left: 0;
     bottom: 0;
     right: 0;
+    z-index: 10;
 }
 // iframe {
 //   position:absolute;
@@ -143,12 +144,52 @@ video {
 //   height:100%;
 //   z-index: 5;
 // }
-// GENERAL STYLES ENDS
-// ========================
+
 
 // ========================
 // HEADER STARTS
+.header {
+    height: 100vh;
+    background-color: #888bac;
+}
 
+.header-content-container {
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    justify-content: flex-start;
+    // align-items: center;
+    // background: transparent url('../assets/arnold-face/hero2.png') right no-repeat fixed;
+    // background-size: contain;
+}
+
+.header-text-button-container {
+    // display: flex;
+    // flex-direction: column;
+    // text-align: center;
+    width: 50%;
+}
+
+.header-image-container {
+    // height: 1000px;
+}
+
+.header-image {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    right: 220px;
+    display: block;
+    height: 100vh;
+}
+
+.start-game-button {
+    font-size: 3rem;
+    // width: 215px;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 12px;
+}
 // HEADER ENDS
 // ========================
 

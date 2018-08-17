@@ -132,35 +132,12 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
-@font-face {
-  font-family: 'Terminator Real NFI';
-  src: url("../assets/fonts/terminator real nfi.otf");
-  src: url("../assets/fonts/terminator real nfi.ttf"); }
-
-h1 {
-  margin: 0;
-  padding: 150px 0 0 0;
-  font-family: 'Terminator Real NFI', 'Merriweather', serif;
-  font-size: 9rem;
-  text-align: right;
-  width: 50%; }
-
-h2 {
-  font-family: 'Brawler', serif;
-  text-transform: uppercase;
-  border: 2px solid black;
-  border-radius: 2px;
-  display: inline-block; }
-
-label {
-  font-family: 'Source Sans Pro', sans-serif; }
-
-legend {
-  font-family: 'Source Sans Pro', sans-serif;
-  color: #222222; }
-
 html {
   font-size: 62.5%; }
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #282828; }
 
 .main {
   background-color: #888bac; }
@@ -170,24 +147,35 @@ html {
   margin: 0 auto; }
 
 .wrapper-sec {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto; }
 
-a {
-  background-color: #ff7a22;
-  padding: 20px 30px;
-  border-style: inset;
-  border-radius: 5px; }
+.button-prim {
+  background-color: #ff5600;
+  border-radius: 5px;
+  text-decoration: none;
+  color: inherit;
+  font-size: 2rem;
+  display: inline-block;
+  text-align: center; }
 
-.header {
-  height: 100vh;
-  background-color: #888bac;
-  position: relative; }
+@font-face {
+  font-family: 'Terminator Real NFI';
+  src: url("../assets/fonts/terminator real nfi.otf");
+  src: url("../assets/fonts/terminator real nfi.ttf"); }
 
-.header-content-container {
-  height: 100vh;
-  background: transparent url("../assets/arnold-face/hero2.png") right no-repeat;
-  background-size: contain; }
+h1 {
+  margin: 0;
+  padding: 150px 0 0 0;
+  font-family: 'Terminator Real NFI', 'Merriweather', serif;
+  font-size: 9rem; }
+
+h2 {
+  font-family: 'Brawler', serif;
+  text-transform: uppercase;
+  border: 2px solid black;
+  border-radius: 2px;
+  display: inline-block; }
 
 .question-container {
   max-height: 100vh;
@@ -211,6 +199,38 @@ video {
   top: 0;
   left: 0;
   bottom: 0;
-  right: 0; }
+  right: 0;
+  z-index: 10; }
+
+.header {
+  height: 100vh;
+  background-color: #888bac; }
+
+.header-content-container {
+  height: 100vh;
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start; }
+
+.header-text-button-container {
+  width: 50%; }
+
+.header-image {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  right: 220px;
+  display: block;
+  height: 100vh; }
+
+.start-game-button {
+  font-size: 3rem;
+  border-radius: 20px;
+  padding: 20px;
+  margin-top: 12px; }
 
 /*# sourceMappingURL=styles.css.map */

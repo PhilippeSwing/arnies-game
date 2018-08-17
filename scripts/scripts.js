@@ -174,23 +174,13 @@ $(function () {
                 const randomRightAudio = randomArrayValue(rightAnswerAudio);
                 $('.arnold-response-audio').attr('src', randomRightAudio)[0].play();
                 // Set image attribute to right answer image
-                $(this).parents('.question-container').find('.arnold-head-image').attr('src', './assets/arnold-face/right-answer3.jpg');
-
-                // Store arnold image in variable
-                // const $correctImage = $('<img>').attr('src', './assets/arnold-face/right-answer1.jpg');
-                // Add image to page
-                // $('.arnold-head-image-container').html($correctImage);
-                // If the user's answer is incorrect, display/add the "wrong" image to the page and play the audio.
+                // $(this).parents('.question-container').find('.arnold-head-image').attr('src', './assets/arnold-face/right-answer3.jpg');
             } else {
                 // Play audio for wrong answer
                 const randomWrongAudio = randomArrayValue(wrongAnswerAudio);
                 $('.arnold-response-audio').attr('src', randomWrongAudio)[0].play();
                 // Set image attribute to wrong answer image
-                $(this).parents('.question-container').find('.arnold-head-image').attr('src', './assets/arnold-face/wrong-answer4.jpg');
-                // Store arnold image in variable
-                // const $wrongImage = $('<img>').attr('src', './assets/arnold-face/wrong-answer1.jpg');
-                // Add image to page
-                // $('.arnold-head-image-container').html($wrongImage);
+                // $(this).parents('.question-container').find('.arnold-head-image').attr('src', './assets/arnold-face/wrong-answer4.jpg');
             }
             console.log(userPoints);
             // Store the first question's section element in a variable
@@ -276,7 +266,7 @@ $(function () {
 
     $('.play-again-buttons-container').on('click', '.button-play-again', function (e) {
         // Set image attribute to default neutral face image
-        $('.arnold-head-image').fadeIn().attr('src', './assets/arnold-face/neutral-face.png');
+        // $('.arnold-head-image').attr('src', './assets/arnold-face/neutral-face.png');
         userPoints = 0;
         console.log(userPoints);
         $('.results-header').text("");
