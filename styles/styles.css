@@ -151,7 +151,10 @@ body {
   margin: 0 auto; }
 
 .button-prim {
-  background-color: #ff5600;
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffa06f), to(#ff5600));
+  background: -webkit-linear-gradient(top, #ffa06f, #ff5600);
+  background: -o-linear-gradient(top, #ffa06f, #ff5600);
+  background: linear-gradient(to bottom, #ffa06f, #ff5600);
   border-radius: 5px;
   text-decoration: none;
   color: inherit;
@@ -213,7 +216,8 @@ h2 {
   font-size: 3rem;
   border-radius: 5px;
   padding: 12px 15px;
-  margin-top: 12px; }
+  margin-top: 12px;
+  text-transform: uppercase; }
 
 .game-header-small-container {
   position: fixed;
@@ -247,7 +251,12 @@ h2 {
   margin-bottom: 10px; }
 
 .question-text {
-  margin-bottom: 35px;
+  margin-bottom: 20px;
   line-height: 30px; }
+
+.submit-button {
+  padding: 15px;
+  text-transform: uppercase;
+  margin-top: 35px; }
 
 /*# sourceMappingURL=styles.css.map */
