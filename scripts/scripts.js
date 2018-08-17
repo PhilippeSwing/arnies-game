@@ -140,11 +140,12 @@ $(function () {
     // Questions Form Submit
     $('.button').on('click', function (e) {
         e.preventDefault();
+        // Start Game Button
         if ($(this).hasClass('start-game-button')) {
-            $('.video-questions').fadeIn(900).removeClass('hide').attr('autoplay', true); // .get(0).play();
+            $('.video-header').fadeIn(900).removeClass('hide').attr('autoplay', true); // .get(0).play();
 
             setTimeout(function () {
-                $('.video-questions').addClass('hide').fadeOut(900);  // .pause().attr('currentTime', 0);
+                $('.video-header').addClass('hide').fadeOut(900);  // .pause().attr('currentTime', 0);
 
                 let $currentSection = $(this).parents('.scroll-section');
                 console.log($currentSection);
@@ -156,6 +157,11 @@ $(function () {
                 }, 1500);
             }, 5100)
 
+            setTimeout(function () {
+                // Add small sticky site header
+                const gameHeaderSmall = $('<h2>').text(`Arnie's Game`).addClass('game-header-small');
+                $('.game-header-small-container').slideDown().append(gameHeaderSmall);
+            }, 6000);
 
 
         } else {  //if (!$(this).hasClass('start-game-button')) 

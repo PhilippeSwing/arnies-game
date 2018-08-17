@@ -166,45 +166,27 @@ body {
 
 h1 {
   margin: 0;
-  padding: 150px 0 0 0;
   font-family: 'Terminator Real NFI', 'Merriweather', serif;
   font-size: 9rem; }
 
 h2 {
-  font-family: 'Brawler', serif;
+  font-family: 'Terminator Real NFI', 'Merriweather', serif;
   text-transform: uppercase;
-  border: 2px solid black;
-  border-radius: 2px;
+  font-size: 3rem;
   display: inline-block; }
 
-.question-container {
-  max-height: 100vh;
-  margin-top: 700px; }
+.question-text {
+  font-size: 2.8rem;
+  font-weight: 700; }
 
-.question-container:first-child {
-  margin-top: 0; }
-
-.arnold-head-image-container {
-  width: 20%; }
-
-.arnold-head-image {
-  display: block;
-  width: 100%; }
-
-.hide {
-  display: none; }
-
-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  z-index: 10; }
+.question-form label {
+  font-size: 1.8rem;
+  margin-left: 10px; }
 
 .header {
   height: 100vh;
-  background-color: #888bac; }
+  background-color: #888bac;
+  padding-top: 200px; }
 
 .header-content-container {
   height: 100vh;
@@ -217,7 +199,7 @@ video {
   justify-content: flex-start; }
 
 .header-text-button-container {
-  width: 50%; }
+  width: 57%; }
 
 .header-image {
   position: fixed;
@@ -229,8 +211,43 @@ video {
 
 .start-game-button {
   font-size: 3rem;
-  border-radius: 20px;
-  padding: 20px;
+  border-radius: 5px;
+  padding: 12px 15px;
   margin-top: 12px; }
+
+.game-header-small-container {
+  position: fixed;
+  top: 0;
+  left: 220px; }
+
+.hide {
+  display: none; }
+
+.video-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 10; }
+
+.question-container {
+  height: 100vh;
+  margin-top: 700px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-top: 150px; }
+
+.question-container:first-child {
+  margin-top: 0; }
+
+.question-form {
+  width: 65%;
+  margin-bottom: 10px; }
+
+.question-text {
+  margin-bottom: 35px;
+  line-height: 30px; }
 
 /*# sourceMappingURL=styles.css.map */
