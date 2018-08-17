@@ -157,10 +157,12 @@ body {
   background: linear-gradient(to bottom, #ffa06f, #ff5600);
   border-radius: 5px;
   text-decoration: none;
-  color: inherit;
+  color: #ffeee5;
   font-size: 2rem;
   display: inline-block;
-  text-align: center; }
+  text-align: center;
+  padding: 15px 35px;
+  text-transform: uppercase; }
 
 @font-face {
   font-family: 'Terminator Real NFI';
@@ -178,7 +180,8 @@ h2 {
   font-size: 3rem;
   display: inline-block; }
 
-.question-text {
+.question-text,
+.results-header {
   font-size: 2.8rem;
   font-weight: 700; }
 
@@ -214,10 +217,7 @@ h2 {
 
 .start-game-button {
   font-size: 3rem;
-  border-radius: 5px;
-  padding: 12px 15px;
-  margin-top: 12px;
-  text-transform: uppercase; }
+  margin-top: 12px; }
 
 .game-header-small-container {
   position: fixed;
@@ -238,16 +238,22 @@ h2 {
 .question-container {
   height: 100vh;
   margin-top: 700px;
+  padding-top: 150px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  padding-top: 150px; }
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
 
 .question-container:first-child {
   margin-top: 0; }
 
 .question-form {
-  width: 65%;
+  width: 60%;
   margin-bottom: 10px; }
 
 .question-text {
@@ -255,8 +261,30 @@ h2 {
   line-height: 30px; }
 
 .submit-button {
-  padding: 15px;
-  text-transform: uppercase;
   margin-top: 35px; }
+
+.results-section {
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin-top: 700px;
+  padding-top: 150px; }
+
+.results-section-content {
+  width: 60%; }
+
+.play-again-buttons-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
+
+.button-play-again,
+.button-give-up,
+.button-poker {
+  margin-right: 10px; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -231,17 +231,17 @@ $(function () {
     // ==Display Buttons==
     const displayResultsButtons = () => {
         const $playAgain = $('<a>').attr({
-            class: "button-play-again",
+            class: "button-play-again button-prim",
             href: "#question1"
         }).text("Play Again!");
 
         const $giveUp = $('<a>').attr({
-            class: "button-give-up",
+            class: "button-give-up button-prim",
             href: "#"
         }).text("Give Up");
 
         const $poker = $('<a>').attr({
-            class: "button-poker",
+            class: "button-poker button-prim",
             href: "#"
         }).text("Play Online Poker");
 
@@ -250,6 +250,7 @@ $(function () {
 
     $('.results-button').on('click', function (e) {
         e.preventDefault();
+        $('.play-again-buttons-container').empty();
         // Results - Put text and maybe image on page. Play final audio
         if (userPoints >= 9) {
             $('.results-header').text(`Well done! You terminated this game by answering ${userPoints} questions correctly.`);
@@ -278,6 +279,7 @@ $(function () {
         $('.results-header').text("");
         $('.button-give-up').detach();
         $('.button-play-again').detach();
+        $('.button-poker').detach();
     });
 
     $('.play-again-buttons-container').on('click', '.button-poker', function (e) {
