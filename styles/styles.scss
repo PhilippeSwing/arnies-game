@@ -39,20 +39,33 @@ body {
     margin: 0 auto;
 }
 
+.button-sound,
 .button-prim {
-    // background-color: #ff5600;     // hsl(22, 100%, 50%);
-    background: linear-gradient(to bottom, rgb(255, 160, 111), rgb(255, 86, 0));
-    // padding: 20px 30px;
     border-radius: 5px;
     text-decoration: none;
     // color: inherit;
     color: #ffeee5;
-    font-size: 2rem;
     display: inline-block;
     text-align: center;
-    padding: 15px 35px;
     text-transform: uppercase;
+    font-family: Volkhov, serif;
+    font-weight: 700;
+}
+
+.button-prim {
+    // background-color: #ff5600;     // hsl(22, 100%, 50%);
+    background: linear-gradient(to bottom, rgb(255, 160, 111), rgb(255, 86, 0));
+    padding: 15px 35px;
+    font-size: 2rem;
+    // padding: 20px 30px;
+    
     // width: 10%;
+}
+
+.button-sound {
+    background: linear-gradient(to bottom, rgb(99, 99, 99), rgb(40, 40, 40));
+    padding: 10px 25px;
+    font-size: 1.5rem;
 }
 // GENERAL STYLES ENDS
 // ========================
@@ -221,6 +234,10 @@ h2 {
     // text-transform: uppercase;
     margin-top: 35px;
     // color: #ffeee5;
+}
+
+.button-sound {
+    background-color: #282828;
 }
 // ==Question Section ENDS==
 

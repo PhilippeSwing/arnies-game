@@ -150,19 +150,32 @@ body {
   max-width: 1000px;
   margin: 0 auto; }
 
+.button-sound,
+.button-prim {
+  border-radius: 5px;
+  text-decoration: none;
+  color: #ffeee5;
+  display: inline-block;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: Volkhov, serif;
+  font-weight: 700; }
+
 .button-prim {
   background: -webkit-gradient(linear, left top, left bottom, from(#ffa06f), to(#ff5600));
   background: -webkit-linear-gradient(top, #ffa06f, #ff5600);
   background: -o-linear-gradient(top, #ffa06f, #ff5600);
   background: linear-gradient(to bottom, #ffa06f, #ff5600);
-  border-radius: 5px;
-  text-decoration: none;
-  color: #ffeee5;
-  font-size: 2rem;
-  display: inline-block;
-  text-align: center;
   padding: 15px 35px;
-  text-transform: uppercase; }
+  font-size: 2rem; }
+
+.button-sound {
+  background: -webkit-gradient(linear, left top, left bottom, from(#636363), to(#282828));
+  background: -webkit-linear-gradient(top, #636363, #282828);
+  background: -o-linear-gradient(top, #636363, #282828);
+  background: linear-gradient(to bottom, #636363, #282828);
+  padding: 10px 25px;
+  font-size: 1.5rem; }
 
 @font-face {
   font-family: 'Terminator Real NFI';
@@ -262,6 +275,9 @@ h2 {
 
 .submit-button {
   margin-top: 35px; }
+
+.button-sound {
+  background-color: #282828; }
 
 .results-section {
   height: 100vh;
