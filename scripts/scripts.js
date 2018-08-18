@@ -139,10 +139,10 @@ $(function () {
         return array[Math.floor(Math.random() * array.length)];
     }
 
-    // Questions Form Submit
+
     $('.button').on('click', function (e) {
         e.preventDefault();
-        // Start Game Button
+        // START GAME BUTTON
         if ($(this).hasClass('start-game-button')) {
             $('.arnold-response-audio').animate({ volume: 0 }, 1500);
             setTimeout(function () {
@@ -170,24 +170,18 @@ $(function () {
                 $('.game-header-small-container').slideDown().append(gameHeaderSmall);
             }, 6000);
 
-
+            // QUESTIONS FORM SUBMIT
         } else {  //if (!$(this).hasClass('start-game-button')) 
             // This variable holds the correct answer value selected by the user
-            // const $userAnswer1 = $('input[name="commando"]:checked').val();
-            const $userAnswer = $(this).parents('form').find('input:checked').val();
+            const $userAnswer = $(this).parents('.question-form').find('input:checked').val();
             console.log($userAnswer);
             // This variable holds the value of the input for the correct answer.
-            const $correctAnswer1 = $('input[id="commando"]').val();
-            // If the user's answer is correct, display/add the "right" image to the page and play the audio
-            // if ($userAnswer1 === $correctAnswer1) {
             if ($.inArray($userAnswer, correctAnswers) > -1) {
                 // Add one point to total
                 userPoints = userPoints + 1;
                 // Play audio for right answer
                 const randomRightAudio = randomArrayValue(rightAnswerAudio);
                 $('.arnold-response-audio').attr('src', randomRightAudio)[0].play();
-                // Set image attribute to right answer image
-                // $(this).parents('.question-container').find('.arnold-head-image').attr('src', './assets/arnold-face/right-answer3.jpg');
             } else {
                 // Play audio for wrong answer
                 const randomWrongAudio = randomArrayValue(wrongAnswerAudio);
@@ -260,16 +254,16 @@ $(function () {
         $('.play-again-buttons-container').empty();
         // Results - Put text and maybe image on page. Play final audio
         if (userPoints >= 9) {
-            $('.results-header').text(`Well done! You terminated this game by answering ${userPoints} questions correctly.`);
+            $('.results-text').text(`"Well done! You terminated this game by answering ${userPoints} questions correctly."`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/illBeBack.mp3')[0].play();
         } else if (userPoints < 9 && userPoints >= 5) {
-            $('.results-header').text(`Not bad! You answered ${userPoints} questions correctly. Watch five more 80s action movie montages and try again.`);
+            $('.results-text').text(`Not bad! You answered ${userPoints} questions correctly. Watch five more 80s action movie montages and try again.`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/illBeBack.mp3')[0].play();
         } else if (userPoints === 1) {
-            $('.results-header').text(`You're a puny weakling with ${userPoints} correct answer! Keep training and try again.`);
+            $('.results-text').text(`You're a puny weakling with ${userPoints} correct answer! Keep training and try again.`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/lack-discipline.wav')[0].play();
         } else {
-            $('.results-header').text(`You're a puny weakling with ${userPoints} correct answers! Keep training and try again.`);
+            $('.results-text').text(`"You're a puny weakling with ${userPoints} correct answers! Keep training and try again."`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/lack-discipline.wav')[0].play();
         }
         displayResultsButtons();
@@ -286,7 +280,7 @@ $(function () {
         // $('.arnold-head-image').attr('src', './assets/arnold-face/neutral-face.png');
         userPoints = 0;
         console.log(userPoints);
-        $('.results-header').text("");
+        $('.results-text').text("");
         $('.button-give-up').detach();
         $('.button-play-again').detach();
         $('.button-poker').detach();
