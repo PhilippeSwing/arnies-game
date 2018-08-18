@@ -88,6 +88,8 @@
 // 4. Create your initialization method, i.e. init(), on the app object.
 
 $(function () {
+    // Play audio on page load
+    $('.arnold-response-audio').attr('src', './assets/audio/touch.mp3')[0].play();
     // Set user points variable
     let userPoints = 0;
 
@@ -142,9 +144,14 @@ $(function () {
         e.preventDefault();
         // Start Game Button
         if ($(this).hasClass('start-game-button')) {
-            $('.video-header').fadeIn(900).removeClass('hide').attr('autoplay', true); // .get(0).play();
+            $('.arnold-response-audio').animate({ volume: 0 }, 1500);
+            setTimeout(function () {
+                $('.video-header').fadeIn(900).removeClass('hide').attr('autoplay', true); // .get(0).play();
+                $('.header-image').addClass('hide').fadeOut(900);
+            }, 1500)
 
             setTimeout(function () {
+                $('.header-image').fadeIn(900).removeClass('hide');
                 $('.video-header').addClass('hide').fadeOut(900);  // .pause().attr('currentTime', 0);
 
                 let $currentSection = $(this).parents('.scroll-section');
@@ -245,7 +252,7 @@ $(function () {
             href: "#"
         }).text("Play Online Poker");
 
-        $('.play-again-buttons-container').append($playAgain, $giveUp, $poker);
+        $('.play-again-buttons-container').append($playAgain, $giveUp);
     };
 
     $('.results-button').on('click', function (e) {
@@ -258,8 +265,11 @@ $(function () {
         } else if (userPoints < 9 && userPoints >= 5) {
             $('.results-header').text(`Not bad! You answered ${userPoints} questions correctly. Watch five more 80s action movie montages and try again.`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/illBeBack.mp3')[0].play();
+        } else if (userPoints === 1) {
+            $('.results-header').text(`You're a puny weakling with ${userPoints} correct answer! Keep training and try again.`);
+            $('.arnold-response-audio').attr('src', './assets/audio/game-results/lack-discipline.wav')[0].play();
         } else {
-            $('.results-header').text(`You're a puny weakling with only ${userPoints} correct answers! Keep training and try again.`);
+            $('.results-header').text(`You're a puny weakling with ${userPoints} correct answers! Keep training and try again.`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/lack-discipline.wav')[0].play();
         }
         displayResultsButtons();
