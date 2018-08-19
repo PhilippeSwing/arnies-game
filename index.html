@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://fonts.googleapis.com/css?family=Belgrano|Brawler|Merriweather:400,700|Open+Sans|Source+Sans+Pro|Ultra|Volkhov:400,700"
         rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="./styles/styles.css">
     <title>Arnie's Game</title>
 </head>
@@ -17,13 +18,17 @@
         <div class="wrapper-prim scroll-section header">
             <div class="wrapper-sec header-content-container">
                 <div class="header-text-button-container">
-                    <h1 class="game-header">Arnie's Game</h1>
+                    <h1 class="game-header">
+                        <span class="header-part1">Arnie's</span>
+                        <span class="header-part2"> Game</span>
+                    </h1>
                     <a href="#" class="start-game-button button-prim button">Press Start Now!</a>
                 </div>
                 <video class="video-header hide" width="100%" src="./assets/videos/bunch-of-questions.mp4" fullscreen>
                     Your browser does not support the video element.
                 </video>
                 <audio src="./assets/audio/wrongAnswer/noDeal.mp3" class="arnold-response-audio"></audio>
+                <audio src="./assets/audio/pageLoad/explosion.mp3" class="explosion-audio"></audio>
                 <div class="header-image-container">
                     <img class="header-image" src="./assets/arnold-face/hero2b.png" alt="">
                 </div>
@@ -174,7 +179,7 @@
 
             <section class="wrapper-sec question6-container question-container scroll-section">
                 <form action="" class="question-form">
-                    <legend class="question-text">Name the movie where I spoke this famous quote.</legend>
+                    <legend class="question-text">Name the movie where I spoke this famous line.</legend>
 
                     <a href="#" class="choppa-button button-sound">Play Audio</a>
                     <div class="answer-container">
@@ -228,7 +233,7 @@
 
             <section class="wrapper-sec question8-container question-container scroll-section">
                 <form action="" class="question-form">
-                    <legend class="question-text">Guns 'n' Roses wrote and performed the following song for the Terminator 2 soundtrack.</legend>
+                    <legend class="question-text">Guns 'n' Roses wrote the following song for the Terminator 2 soundtrack.</legend>
                     <div class="answer-container">
                         <input type="radio" id="should" name="could" value="should">
                         <label for="should">You Should Be Mine</label>
@@ -254,7 +259,7 @@
 
             <section class="wrapper-sec question9-container question-container scroll-section">
                 <form action="" class="question-form">
-                    <legend class="question-text">What was a key plot point in "Junior", definitely one of the worst movies I ever made.</legend>
+                    <legend class="question-text">What was the key plot point in "Junior", definitely one of the worst movies I ever made.</legend>
                     <div class="answer-container">
                         <input type="radio" id="twin" name="cares" value="twin">
                         <label for="twin">I engage in highjinks with my long lost twin brother.</label>
@@ -280,7 +285,7 @@
 
             <section class="wrapper-sec question10-container question-container scroll-section">
                 <form action="" class="question-form">
-                    <legend class="question-text">I said this famous quote in a movie based on a Stephen King novel.</legend>
+                    <legend class="question-text">I shouted this line in a movie based on a Stephen King novel.</legend>
 
                     <a href="#" class="zero-button button-sound">Play Audio</a>
 
@@ -328,8 +333,8 @@
     <!-- FOOTER ENDS -->
     <!-- ======================== -->
     <script src='https://code.jquery.com/jquery-3.2.1.min.js ' integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='
-        crossorigin=' anonymous
-                        '></script>
+        crossorigin='anonymous'></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="./scripts/scripts.js"></script>
 </body>
 

@@ -149,6 +149,11 @@ h2 {
     width: 57%;
 }
 
+.game-header {
+    position: relative;
+    top: -500px;
+}
+
 .header-image {
     position: fixed;
     z-index: 5;
@@ -165,6 +170,8 @@ h2 {
     // border-radius: 5px;
     // padding: 15px 35px;
     margin-top: 12px;
+    position: relative;
+    bottom: -500px;
     // text-transform: uppercase;
 }
 
@@ -197,7 +204,54 @@ h2 {
     right: 0;
     z-index: 10;
 }
+// ==Header Animation STARTS==
+// ====Header Image====
+@keyframes arnie-image {
+    0% {
+        transform: translateX(1000%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
 
+.header-image {
+    animation: arnie-image 1.3s linear;
+    // animation-delay: 1s;
+    // animation-fill-mode: forwards;
+}
+// ====Header Text====
+@keyframes header-text {
+    0% {
+        top: -500px;
+    }
+    100% {
+        top: 0;
+    }
+}
+
+.game-header {
+    animation:  header-text 0.2s linear;
+    animation-delay: 3.2s;
+    animation-fill-mode: forwards;
+}
+// ====Header Button====
+@keyframes header-button {
+    0% {
+        bottom: -500px;
+    }
+    100% {
+        bottom: 0;
+    }
+}
+
+.start-game-button {
+    animation:  header-button 0.2s linear;
+    animation-delay: 5.2s;
+    animation-fill-mode: forwards;
+}
+
+// ==Header Animation ENDS==
 // HEADER ENDS
 // ========================
 

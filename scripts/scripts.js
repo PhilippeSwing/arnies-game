@@ -88,8 +88,16 @@
 // 4. Create your initialization method, i.e. init(), on the app object.
 
 $(function () {
-    // Play audio on page load
-    $('.arnold-response-audio').attr('src', './assets/audio/touch.mp3')[0].play();
+    // Song on page load
+    $('.arnold-response-audio').attr('src', './assets/audio/pageLoad/countdown-edit.mp3')[0].play();
+    // Explosion on page load
+    setTimeout(function () {
+        $('.explosion-audio')[0].play();
+    }, 15000);
+
+    setTimeout(function () {
+        $('.header-content-container, .header-image').effect('shake', 500);
+    }, 15000)
     // Set user points variable
     let userPoints = 0;
 
@@ -151,8 +159,11 @@ $(function () {
             }, 1500)
 
             setTimeout(function () {
-                $('.header-image').fadeIn(900).css('display', 'inline');
-                $('.video-header').addClass('hide').fadeOut(900);  // .pause().attr('currentTime', 0);
+                $('.header-image').fadeIn(900).css({
+                    display: 'inline',
+                    transform: 'translateX(0)'
+                });
+                $('.video-header').addClass('hide').fadeOut(1500);  // .pause().attr('currentTime', 0);
 
                 let $currentSection = $(this).parents('.scroll-section');
                 // Store the next question's section element in a variable
