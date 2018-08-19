@@ -155,10 +155,8 @@ $(function () {
                 $('.video-header').addClass('hide').fadeOut(900);  // .pause().attr('currentTime', 0);
 
                 let $currentSection = $(this).parents('.scroll-section');
-                console.log($currentSection);
                 // Store the next question's section element in a variable
                 let $nextSection = $('#question1');
-                console.log($nextSection);
                 $('html, body').stop(true).animate({
                     scrollTop: $nextSection.offset().top
                 }, 1500);
@@ -171,17 +169,14 @@ $(function () {
             }, 6000);
 
             // QUESTIONS FORM SUBMIT
-        } else {  //if (!$(this).hasClass('start-game-button')) 
+        } else {
             // This variable holds the correct answer value selected by the user
             const $userAnswer = $(this).parents('.question-form').find('input:checked').val();
-            console.log($userAnswer);
             // This variable holds the value of the input for the correct answer.
             if ($.inArray($userAnswer, correctAnswers) > -1) {
                 // Add one point to total
                 userPoints = userPoints + 1;
                 // Play audio for right answer
-                console.log(userPoints);
-                // $('.arnold-response-audio').animate({ volume: 1 });
                 const randomRightAudio = randomArrayValue(rightAnswerAudio);
                 $('.arnold-response-audio').attr('src', randomRightAudio).animate({ volume: 1 })[0].play();
             } else {
@@ -191,13 +186,10 @@ $(function () {
                 // Set image attribute to wrong answer image
                 // $(this).parents('.question-container').find('.arnold-head-image').attr('src', './assets/arnold-face/wrong-answer4.jpg');
             }
-            console.log(userPoints);
             // Store the first question's section element in a variable
             let $currentSection = $(this).parents('.scroll-section');
-            console.log($currentSection);
             // Store the next question's section element in a variable
             let $nextSection = $currentSection.next('.scroll-section');
-            console.log($nextSection);
             // After some time (allowing audio to play), check if another queston exists. If it does, the next section element is stored in the $currentSection variable. The stop(true) stops any animation I might have running but for now it doesn't apply. animate() includes scollTop
             setTimeout(function () {
                 if ($nextSection.length) {
@@ -211,7 +203,6 @@ $(function () {
                 // Remove check from checkbox
                 $('input').prop("checked", false);
             }, 1000);
-            console.log(userPoints);
         }
     });
     // ========================
@@ -225,7 +216,7 @@ $(function () {
 
     $('.zero-button').on('click', function (e) {
         e.preventDefault();
-        $('.arnold-response-audio').attr('src', './assets/audio/quotes/sub-zero.mp3')[0].play();
+        $('.arnold-response-audio').attr('src', './assets/audio/quotes/butIHopeYouLeaveEnoughRoomForMyFist.mp3')[0].play();
     });
     // ========================
 
@@ -281,7 +272,6 @@ $(function () {
         // Set image attribute to default neutral face image
         // $('.arnold-head-image').attr('src', './assets/arnold-face/neutral-face.png');
         userPoints = 0;
-        console.log(userPoints);
         $('.results-text').text("");
         $('.button-give-up').detach();
         $('.button-play-again').detach();
