@@ -147,11 +147,11 @@ $(function () {
             $('.arnold-response-audio').animate({ volume: 0 }, 1500);
             setTimeout(function () {
                 $('.video-header').fadeIn(900).removeClass('hide').attr('autoplay', true); // .get(0).play();
-                $('.header-image').addClass('hide').fadeOut(900);
+                $('.header-image').css('display', 'none').fadeOut(900);
             }, 1500)
 
             setTimeout(function () {
-                $('.header-image').fadeIn(900).removeClass('hide');
+                $('.header-image').fadeIn(900).css('display', 'inline');
                 $('.video-header').addClass('hide').fadeOut(900);  // .pause().attr('currentTime', 0);
 
                 let $currentSection = $(this).parents('.scroll-section');
@@ -180,12 +180,14 @@ $(function () {
                 // Add one point to total
                 userPoints = userPoints + 1;
                 // Play audio for right answer
+                console.log(userPoints);
+                // $('.arnold-response-audio').animate({ volume: 1 });
                 const randomRightAudio = randomArrayValue(rightAnswerAudio);
-                $('.arnold-response-audio').attr('src', randomRightAudio)[0].play();
+                $('.arnold-response-audio').attr('src', randomRightAudio).animate({ volume: 1 })[0].play();
             } else {
                 // Play audio for wrong answer
                 const randomWrongAudio = randomArrayValue(wrongAnswerAudio);
-                $('.arnold-response-audio').attr('src', randomWrongAudio)[0].play();
+                $('.arnold-response-audio').attr('src', randomWrongAudio).animate({ volume: 1 })[0].play();
                 // Set image attribute to wrong answer image
                 // $(this).parents('.question-container').find('.arnold-head-image').attr('src', './assets/arnold-face/wrong-answer4.jpg');
             }
@@ -290,7 +292,5 @@ $(function () {
         e.preventDefault();
         $('.arnold-response-audio').attr('src', './assets/audio/poker/iDontPlayThatGame.mp3')[0].play();
     });
-
-
 });
 

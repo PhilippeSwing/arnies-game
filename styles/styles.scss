@@ -38,6 +38,7 @@ body {
 .wrapper-sec {
     max-width: 1000px;
     margin: 0 auto;
+    // border: 1px solid red;
 }
 
 .button-sound,
@@ -58,9 +59,24 @@ body {
     background: linear-gradient(to bottom, rgb(255, 160, 111), rgb(255, 86, 0));
     padding: 15px 35px;
     font-size: 2rem;
-    // padding: 20px 30px;
-    
-    // width: 10%;
+    transition: all 0.1s;
+}
+
+.button-sound {
+    transition: all 0.1s;
+}
+
+.button-prim:hover,
+.button-sound:hover {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    transform: scale(1.1);
+}
+
+.button-prim:active,
+.button-sound:active {
+    box-shadow: 0 10px 10px -15px rgba(0, 0, 0, 0.5);
+    transform: scale(1);
+    // transform: 
 }
 
 .button-sound {
@@ -85,20 +101,14 @@ body {
 
 h1 {
     margin: 0;
-    // padding: 150px 0 0 0;
     font-family: 'Terminator Real NFI', 'Merriweather', serif;
     font-size: 9rem;
-    // text-align: center;
-    // width: 50%; //Delete this and use padding
-    // color: #cc0000;
 }
 
 h2 {
     font-family: 'Terminator Real NFI', 'Merriweather', serif;
     text-transform: uppercase;
     font-size: 3rem;
-    // border: 2px solid black;
-    // border-radius: 2px;
     display: inline-block;
 }
 
@@ -108,31 +118,12 @@ h2 {
     font-weight: 700;
 }
 
-.question-form label {
+.answer-container label {
     font-size: 2.2rem;
 }
-
-// label {
-//     font-family: 'Source Sans Pro', sans-serif;
-// }
-
-// legend {
-//     font-family: 'Source Sans Pro', sans-serif;
-//     color: #222222;
-// }
 // TYPOGRAPHY ENDS
 // ========================
 
-
-// GETTING RID OF THE HEAD IMAGE
-// .arnold-head-image-container {
-//     width: 20%;
-// }
-
-// .arnold-head-image {
-//     display: block;
-//     width: 100%;
-// }
 // ========================
 // HEADER STARTS
 .header {
@@ -149,8 +140,6 @@ h2 {
     align-items: center;
     position: relative;
     padding: 0 30px;
-    // background: transparent url('../assets/arnold-face/hero2.png') right no-repeat fixed;
-    // background-size: contain;
 }
 
 .header-text-button-container {
@@ -158,10 +147,6 @@ h2 {
     // flex-direction: column;
     // text-align: center;
     width: 57%;
-}
-
-.header-image-container {
-    // height: 1000px;
 }
 
 .header-image {
@@ -186,7 +171,9 @@ h2 {
 .game-header-small-container {
     position: fixed;
     top: 0;
-    left: 220px;
+    left: 15.3;
+    // display: block;
+    // right: 845px;
     // right: 0;   
 }
 
@@ -220,7 +207,7 @@ h2 {
 .question-container {
     height: 100vh;
     margin-top: 700px;
-    padding: 150px 30px 0 30px;
+    padding: 125px 30px 0 30px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -241,13 +228,33 @@ h2 {
     line-height: 30px;
 }
 
-.question-form label {
-    margin-left: 10px;
-    line-height: 25px;
-}
-
 .answer-container {
     margin-bottom: 10px;
+}
+
+.answer-container label {
+    padding-left: 35px;
+    line-height: 25px;
+    background: url('../assets/bicep-black.png') left top no-repeat;
+    background-size: contain;
+}
+
+.answer-container label:hover {
+    cursor: pointer;
+}
+
+.answer-container input:checked + label {
+    background: url('../assets/bicep-yellow.png') left top no-repeat;
+    background-size: contain;
+    color: #ffeee5;
+}
+// .answer-container input:checked + label {
+//     background: url('../assets/bicep-orange.png') left top no-repeat;
+//     background-size: contain;
+//     color: white;
+// }
+.answer-container input {
+    display: none;
 }
 
 .submit-button {
@@ -274,6 +281,9 @@ h2 {
 
 .results-section-content {
     width: 55%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .results-text {
@@ -284,10 +294,8 @@ h2 {
     display: flex;
 }
 
-.button-play-again,
-.button-give-up,
-.button-poker, {
-    margin-right: 10px;
+.button-play-again {
+    margin-right: 15px;
 }
 // ==Results Section ENDS==
 // MAIN ENDS
@@ -298,11 +306,19 @@ h2 {
     .header-image {
         right: 12.3%;
     }
+
+    .game-header-small-container {
+        left: 12.3%;
+    }
 }
 
 @media (max-width: 1150px) {
     .header-image {
         right: 6.3%;
+    }
+
+    .game-header-small-container {
+        left: 6.3%;
     }
 }
 
@@ -311,13 +327,17 @@ h2 {
         right: 30px;
     }
 
+    .game-header-small-container {
+        left: 30px;
+    }
+
     .header-text-button-container {
         width: 65%;
     }
 }
 
 @media (max-width: 960px) {
-    .header-image {
+    .header-image-container {
         display: none;
     }
 
@@ -366,12 +386,12 @@ h2 {
         line-height: 25px;
     }
 
-    .question-form label {
-        font-size: 1.8rem;
-    }
-
     .answer-container {
         margin-bottom: 7px;
+    }
+
+    .answer-container label {
+        font-size: 1.8rem;
     }
 
     .button-prim {

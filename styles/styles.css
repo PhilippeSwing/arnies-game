@@ -167,7 +167,31 @@ body {
   background: -o-linear-gradient(top, #ffa06f, #ff5600);
   background: linear-gradient(to bottom, #ffa06f, #ff5600);
   padding: 15px 35px;
-  font-size: 2rem; }
+  font-size: 2rem;
+  -webkit-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  transition: all 0.1s; }
+
+.button-sound {
+  -webkit-transition: all 0.1s;
+  -o-transition: all 0.1s;
+  transition: all 0.1s; }
+
+.button-prim:hover,
+.button-sound:hover {
+  -webkit-box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  transform: scale(1.1); }
+
+.button-prim:active,
+.button-sound:active {
+  -webkit-box-shadow: 0 10px 10px -15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 10px -15px rgba(0, 0, 0, 0.5);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  transform: scale(1); }
 
 .button-sound {
   background: -webkit-gradient(linear, left top, left bottom, from(#636363), to(#282828));
@@ -198,7 +222,7 @@ h2 {
   font-size: 2.8rem;
   font-weight: 700; }
 
-.question-form label {
+.answer-container label {
   font-size: 2.2rem; }
 
 .header {
@@ -238,7 +262,7 @@ h2 {
 .game-header-small-container {
   position: fixed;
   top: 0;
-  left: 220px; }
+  left: 15.3; }
 
 .game-header-small {
   margin: 15px 0 0 0;
@@ -259,7 +283,7 @@ h2 {
 .question-container {
   height: 100vh;
   margin-top: 700px;
-  padding: 150px 30px 0 30px;
+  padding: 125px 30px 0 30px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -281,12 +305,25 @@ h2 {
   margin-bottom: 20px;
   line-height: 30px; }
 
-.question-form label {
-  margin-left: 10px;
-  line-height: 25px; }
-
 .answer-container {
   margin-bottom: 10px; }
+
+.answer-container label {
+  padding-left: 35px;
+  line-height: 25px;
+  background: url("../assets/bicep-black.png") left top no-repeat;
+  background-size: contain; }
+
+.answer-container label:hover {
+  cursor: pointer; }
+
+.answer-container input:checked + label {
+  background: url("../assets/bicep-yellow.png") left top no-repeat;
+  background-size: contain;
+  color: #ffeee5; }
+
+.answer-container input {
+  display: none; }
 
 .submit-button {
   margin-top: 35px; }
@@ -307,7 +344,17 @@ h2 {
   padding: 250px 30px 0 30px; }
 
 .results-section-content {
-  width: 55%; }
+  width: 55%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: flex-start; }
 
 .results-text {
   font-style: italic; }
@@ -317,27 +364,31 @@ h2 {
   display: -ms-flexbox;
   display: flex; }
 
-.button-play-again,
-.button-give-up,
-.button-poker {
-  margin-right: 10px; }
+.button-play-again {
+  margin-right: 15px; }
 
 @media (max-width: 1350px) {
   .header-image {
-    right: 12.3%; } }
+    right: 12.3%; }
+  .game-header-small-container {
+    left: 12.3%; } }
 
 @media (max-width: 1150px) {
   .header-image {
-    right: 6.3%; } }
+    right: 6.3%; }
+  .game-header-small-container {
+    left: 6.3%; } }
 
 @media (max-width: 1050px) {
   .header-image {
     right: 30px; }
+  .game-header-small-container {
+    left: 30px; }
   .header-text-button-container {
     width: 65%; } }
 
 @media (max-width: 960px) {
-  .header-image {
+  .header-image-container {
     display: none; }
   .header-text-button-container {
     width: 100%; }
@@ -373,10 +424,10 @@ h2 {
     font-size: 2.3rem;
     font-weight: 700;
     line-height: 25px; }
-  .question-form label {
-    font-size: 1.8rem; }
   .answer-container {
     margin-bottom: 7px; }
+  .answer-container label {
+    font-size: 1.8rem; }
   .button-prim {
     padding: 10px 27px;
     font-size: 1.7rem; }
