@@ -1,0 +1,16 @@
+// FONTS
+@font-face {
+    font-family: 'Terminator Real NFI';
+    src: url('../assets/fonts/terminator real nfi.otf');
+    src: url('../assets/fonts/terminator real nfi.ttf');
+}
+
+$font-prim: 'Source Sans Pro', sans-serif;
+$font-sec: 'Terminator Real NFI', 'Source Sans Pro', sans-serif;
+
+// COLOURS
+$colour-prim: rgb(40, 40, 40);
+$colour-sec: rgb(255, 238, 229);
+$colour-third: rgb(255, 86, 0);
+$colour-body: rgb(136, 139, 172);
+

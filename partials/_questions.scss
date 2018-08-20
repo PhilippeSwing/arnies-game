@@ -1,0 +1,56 @@
+.question-container {
+    height: 100vh;
+    margin-top: 700px;
+    padding: 125px 30px 0 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.question-container:first-child {
+    margin-top: 0;
+}
+
+.question-form {
+    width: 55%;
+    margin-bottom: 10px;
+}
+
+.question-text {
+    margin-bottom: 20px;
+    line-height: 30px;
+}
+
+.answer-container {
+    margin-bottom: 10px;
+}
+
+.answer-container label {
+    padding-left: 35px;
+    line-height: 25px;
+    background: url('../assets/bicep-black.png') left top no-repeat;
+    background-size: contain;
+}
+
+.answer-container label:hover {
+    cursor: pointer;
+}
+
+.answer-container input:checked + label {
+    background: url('../assets/bicep-yellow.png') left top no-repeat;
+    background-size: contain;
+    color: $colour-sec;
+}
+
+.answer-container input {
+    display: none;
+}
+
+.submit-button {
+    margin-top: 35px;
+}
+
+.button-sound {
+    background-color: $colour-prim;
+    margin: -10px 0 10px 0;
+}

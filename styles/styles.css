@@ -132,6 +132,11 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+@font-face {
+  font-family: 'Terminator Real NFI';
+  src: url("../assets/fonts/terminator real nfi.otf");
+  src: url("../assets/fonts/terminator real nfi.ttf"); }
+
 html {
   font-size: 62.5%; }
 
@@ -158,8 +163,9 @@ body {
   display: inline-block;
   text-align: center;
   text-transform: uppercase;
-  font-family: Volkhov, serif;
-  font-weight: 700; }
+  font-family: 'Terminator Real NFI', 'Source Sans Pro', sans-serif;
+  letter-spacing: 2px;
+  font-weight: 400; }
 
 .button-prim {
   background: -webkit-gradient(linear, left top, left bottom, from(#ffa06f), to(#ff5600));
@@ -173,6 +179,12 @@ body {
   transition: all 0.1s; }
 
 .button-sound {
+  background: -webkit-gradient(linear, left top, left bottom, from(#636363), to(#282828));
+  background: -webkit-linear-gradient(top, #636363, #282828);
+  background: -o-linear-gradient(top, #636363, #282828);
+  background: linear-gradient(to bottom, #636363, #282828);
+  padding: 10px 25px;
+  font-size: 1.5rem;
   -webkit-transition: all 0.1s;
   -o-transition: all 0.1s;
   transition: all 0.1s; }
@@ -181,9 +193,9 @@ body {
 .button-sound:hover {
   -webkit-box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
   box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-  -webkit-transform: scale(1.1);
-  -ms-transform: scale(1.1);
-  transform: scale(1.1); }
+  -webkit-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  transform: scale(1.05); }
 
 .button-prim:active,
 .button-sound:active {
@@ -192,19 +204,6 @@ body {
   -webkit-transform: scale(1);
   -ms-transform: scale(1);
   transform: scale(1); }
-
-.button-sound {
-  background: -webkit-gradient(linear, left top, left bottom, from(#636363), to(#282828));
-  background: -webkit-linear-gradient(top, #636363, #282828);
-  background: -o-linear-gradient(top, #636363, #282828);
-  background: linear-gradient(to bottom, #636363, #282828);
-  padding: 10px 25px;
-  font-size: 1.5rem; }
-
-@font-face {
-  font-family: 'Terminator Real NFI';
-  src: url("../assets/fonts/terminator real nfi.otf");
-  src: url("../assets/fonts/terminator real nfi.ttf"); }
 
 h1 {
   margin: 0;
@@ -261,6 +260,7 @@ h2 {
 
 .start-game-button {
   font-size: 3rem;
+  width: 80%;
   margin-top: 12px;
   position: relative;
   bottom: -500px; }
@@ -303,8 +303,8 @@ h2 {
     transform: translateX(0); } }
 
 .header-image {
-  -webkit-animation: arnie-image 1.3s linear;
-  animation: arnie-image 1.3s linear; }
+  -webkit-animation: arnie-image 1.4s linear;
+  animation: arnie-image 1.4s linear; }
 
 @-webkit-keyframes header-text {
   0% {
@@ -422,6 +422,12 @@ h2 {
   -ms-flex-align: start;
   align-items: flex-start; }
 
+.results-button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#636363), to(#282828));
+  background: -webkit-linear-gradient(top, #636363, #282828);
+  background: -o-linear-gradient(top, #636363, #282828);
+  background: linear-gradient(to bottom, #636363, #282828); }
+
 .results-text {
   font-style: italic; }
 
@@ -435,7 +441,7 @@ h2 {
 
 @media (max-width: 1350px) {
   .header-image {
-    right: 12.3%; }
+    right: 10.5%; }
   .game-header-small-container {
     left: 12.3%; } }
 
@@ -469,7 +475,7 @@ h2 {
     width: 100%; }
   .results-section-content {
     width: 100%;
-    text-align: center; }
+    text-align: left; }
   .play-again-buttons-container {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -511,11 +517,11 @@ h2 {
     font-size: 2rem;
     font-weight: 700;
     line-height: 22px; }
-  .button-prim {
-    padding: 10px 27px;
-    font-size: 1.7rem; }
   .button-sound {
     padding: 7px 20px;
-    font-size: 1.2rem; } }
+    font-size: 1.2rem; }
+  .button-prim {
+    padding: 9px 25px;
+    font-size: 1.5rem; } }
 
 /*# sourceMappingURL=styles.css.map */

@@ -1,95 +1,54 @@
-// HOME PAGE
-// ========================
-// 1. On page load, play Terminator theme song.
-// 2. Listen for button click "Press Start to Play"
-// 3. Play hammer sounds when button is clicked.
-// 4. After hammer sounds, play video of "I'd like to ask you a bunch of questions..."
-// 5. Scroll to first question or navigate to questions page, whichever is easier.
+const arnieApp = {};
 
+// Set user points variable
+arnieApp.userPoints = 0;
 
-// QUESTIONS
-// ========================
-// 1. Listen for user click
-// 2. Store value of selection in a var
-// 3. Check to see whether the value is correct or incorrect
-// 4a. Play audio for wrong/correct an
-// 4b. Add point if correct answer, else don't
-// 4c. Set arnold pic to smilling for correct answer or angry for inco
-// 5. Go to next question after audio clip. (Might need setTimeout if not poss
+// Array of correct answers
+arnieApp.correctAnswers = [
+    "commando",
+    "ugly",
+    "wolfcastle",
+    "cloboomot",
+    "tumour",
+    "predator",
+    "cabeza",
+    "could",
+    "cares",
+    "running"
+]
 
-// SCOREBOARD
-// ========================
-// Use sticky firebase scoreboard in the bottom right corner of the page.
+// Array of audio file paths for right answers
+arnieApp.rightAnswerAudio = [
+    "./assets/audio/rightAnswer/good.mp3",
+    "./assets/audio/rightAnswer/no-problemo.mp3",
+    "./assets/audio/rightAnswer/thatsAmazingReally.mp3",
+    "./assets/audio/rightAnswer/yeah.mp3"
+]
 
-// LAST QUESTION
-// ========================
-// 1. Play audio clip during scroll to last question.
+// Array of audio file paths for wrong answers
+arnieApp.wrongAnswerAudio = [
+    "./assets/audio/wrongAnswer/deep-trouble.wav",
+    "./assets/audio/wrongAnswer/don'tBeRidiculous.mp3",
+    "./assets/audio/wrongAnswer/imSmartUnlikeSomeoneWeKnow.mp3",
+    "./assets/audio/wrongAnswer/no1.wav",
+    "./assets/audio/wrongAnswer/no2.wav",
+    "./assets/audio/wrongAnswer/noDeal.mp3",
+    "./assets/audio/wrongAnswer/noItsNotTrue.mp3",
+    "./assets/audio/wrongAnswer/whatsTheMatter.mp3",
+    "./assets/audio/wrongAnswer/whatTheHellWereYouThinking.mp3",
+    "./assets/audio/wrongAnswer/wrong.mp3"
+]
 
-// FINISH
-// ========================
-// 1. "Click to Finish" button appears next to the submit button after the last question is submitted.
-// 2. Listen for click event.
-// 3a. Play video if score is above 70%, or another if below 70%.
-// 3b. 
-// Low Points: You're a puny weakling. Hit the gym and pump up your Arnie knowledge
-// Mid Points: Not Bad. 
-// High Points: Excellent! You're ready to directan 80s testosterone flick.
+// Array of audio file pths when clicking to "give up"
+arnieApp.quitGameAudio = [
+    "./assets/audio/quitGame/iveGotNewsForYouYourMineNow.mp3",
+    "./assets/audio/quitGame/stopIt.mp3",
+    "./assets/audio/quitGame/stopWhining.mp3"
+]
 
-// 4. "Play Again?" button displays on its own page
-// 5. Listen for button click
-// 6. Navigate to Home page
-
-// ???
-// 1. Playing audio and video
-// 2. Storing points in a variable?
-// 3. Quit Button and Play Again button at end
-
-// MVP2 - Store all question html in an array of objects and have them display dynamically
-
-// MVP3 - One question has a textarea where users enter as many arnold movie titles as they can think of (use one key word and separate by comma). SetTimeout for them before runnig a function that end sthe question.Turn that string into an array of strings to compare with my array list.
-
-// MVP4 - "Quit Game" button with audio clip
-// ========================
-
-// MVP5 - On click of arnold image, play audio clip "Stop it!"
-// ========================
-
-// MVP6 - On click of "Play Online Poker" button, play audio clip "I don't play that game"
-// ========================
-
-// An array of object, each holding a question and its answers
-// const questions = [
-//     {
-//         question1: "In 1985, I played a retired Special Forces soldier who rescues Alyssa Milano from a puny weakling who wears a chainmail vest.",
-//         answer1:,
-//         answer2:,
-//         answer3:,
-//         answer4:
-//     },
-//     {
-//         question2:,
-//         answer1:,
-//         answer2:,
-//         answer3:,
-//         answer4:
-//     },
-//     {
-//         question3:,
-//         answer1:,
-//         answer2:,
-//         answer3:,
-//         answer4:
-//     },
-// ]
-
-// 1. Create the namespace(name of the app object)
-// 2. Store variable in your pp object
-// 3. Everythig else, i.e.loops, event listeners, are stored in a function that is then added to your app object. This makes them methods on your app object.
-// 4. Create your initialization method, i.e. init(), on the app object.
-
-$(function () {
+arnieApp.pageLoad = function () {
     // Song on page load
-    $('.arnold-response-audio').attr('src', './assets/audio/pageLoad/countdown-edit.mp3')[0].play();
+    $('.arnold-response-audio').attr('src', './assets/audio/pageLoad/countdown-edit.mp3').get(0).play();
     // Explosion on page load
     setTimeout(function () {
         $('.explosion-audio')[0].play();
@@ -97,67 +56,29 @@ $(function () {
 
     setTimeout(function () {
         $('.header-content-container, .header-image').effect('shake', 500);
-    }, 15000)
-    // Set user points variable
-    let userPoints = 0;
+    }, 15200);
+};
 
+// Random Array Value
+arnieApp.randomArrayValue = (array) => {
+    return array[Math.floor(Math.random() * array.length)];
+}
 
-    // Array of correct answers
-    const correctAnswers = [
-        "commando",
-        "ugly",
-        "wolfcastle",
-        "cloboomot",
-        "tumour",
-        "predator",
-        "cabeza",
-        "could",
-        "cares",
-        "running"
-    ]
-    // Array of audio file paths for right answers
-    const rightAnswerAudio = [
-        "./assets/audio/rightAnswer/good.mp3",
-        "./assets/audio/rightAnswer/no-problemo.mp3",
-        "./assets/audio/rightAnswer/thatsAmazingReally.mp3",
-        "./assets/audio/rightAnswer/yeah.mp3"
-    ]
-    // Array of audio file paths for wrong answers
-    const wrongAnswerAudio = [
-        "./assets/audio/wrongAnswer/deep-trouble.wav",
-        "./assets/audio/wrongAnswer/don'tBeRidiculous.mp3",
-        "./assets/audio/wrongAnswer/imSmartUnlikeSomeoneWeKnow.mp3",
-        "./assets/audio/wrongAnswer/no1.wav",
-        "./assets/audio/wrongAnswer/no2.wav",
-        "./assets/audio/wrongAnswer/noDeal.mp3",
-        "./assets/audio/wrongAnswer/noItsNotTrue.mp3",
-        "./assets/audio/wrongAnswer/whatsTheMatter.mp3",
-        "./assets/audio/wrongAnswer/whatTheHellWereYouThinking.mp3",
-        "./assets/audio/wrongAnswer/wrong.mp3"
-    ]
-
-    const quitGameAudio = [
-        "./assets/audio/quitGame/iveGotNewsForYouYourMineNow.mp3",
-        "./assets/audio/quitGame/stopIt.mp3",
-        "./assets/audio/quitGame/stopWhining.mp3"
-    ]
-
-    // Random Array Value
-    const randomArrayValue = (array) => {
-        return array[Math.floor(Math.random() * array.length)];
-    }
-
-
+// Start Game and Question Submit Buttons
+arnieApp.mainButtonSubmit = function () {
     $('.button').on('click', function (e) {
         e.preventDefault();
-        // START GAME BUTTON
+        // START GAME BUTTON CLICK
+        // Cutoff page load audio and play intro video
         if ($(this).hasClass('start-game-button')) {
+            // Remove explosion sound and shake effect if the user clicks to start before they happen
             $('.arnold-response-audio').animate({ volume: 0 }, 1500);
+            $('.explosion-audio').animate({ volume: 0 }, 1500);
             setTimeout(function () {
                 $('.video-header').fadeIn(900).removeClass('hide').attr('autoplay', true); // .get(0).play();
                 $('.header-image').css('display', 'none').fadeOut(900);
             }, 1500)
-
+            // After the video is done plying, display the sticky Arnold image and scroll to the first question
             setTimeout(function () {
                 $('.header-image').fadeIn(900).css({
                     display: 'inline',
@@ -172,36 +93,37 @@ $(function () {
                     scrollTop: $nextSection.offset().top
                 }, 1500);
             }, 5100)
-
+            // Display sticky small header at top of page when scrolling to the first question
             setTimeout(function () {
                 // Add small sticky site header
                 const gameHeaderSmall = $('<h2>').text(`Arnie's Game`).addClass('game-header-small');
                 $('.game-header-small-container').slideDown().append(gameHeaderSmall);
             }, 6000);
+            // ========================
 
+            // ========================
             // QUESTIONS FORM SUBMIT
         } else {
             // This variable holds the correct answer value selected by the user
             const $userAnswer = $(this).parents('.question-form').find('input:checked').val();
-            // This variable holds the value of the input for the correct answer.
-            if ($.inArray($userAnswer, correctAnswers) > -1) {
+            // If the value of the user's selection equals one of the values in the correctAnswers array, add a point and play a random audio clip from the rightAnswerAudio array.
+            if ($.inArray($userAnswer, arnieApp.correctAnswers) > -1) {
                 // Add one point to total
-                userPoints = userPoints + 1;
+                arnieApp.userPoints = arnieApp.userPoints + 1;
                 // Play audio for right answer
-                const randomRightAudio = randomArrayValue(rightAnswerAudio);
+                const randomRightAudio = arnieApp.randomArrayValue(arnieApp.rightAnswerAudio);
                 $('.arnold-response-audio').attr('src', randomRightAudio).animate({ volume: 1 })[0].play();
+                // If the value of the user's selection does not equal one of the values in the correctAnswers array, do not add a point and play a random audio clip from the wrongAnswerAudio array.
             } else {
                 // Play audio for wrong answer
-                const randomWrongAudio = randomArrayValue(wrongAnswerAudio);
+                const randomWrongAudio = arnieApp.randomArrayValue(arnieApp.wrongAnswerAudio);
                 $('.arnold-response-audio').attr('src', randomWrongAudio).animate({ volume: 1 })[0].play();
-                // Set image attribute to wrong answer image
-                // $(this).parents('.question-container').find('.arnold-head-image').attr('src', './assets/arnold-face/wrong-answer4.jpg');
             }
             // Store the first question's section element in a variable
             let $currentSection = $(this).parents('.scroll-section');
             // Store the next question's section element in a variable
             let $nextSection = $currentSection.next('.scroll-section');
-            // After some time (allowing audio to play), check if another queston exists. If it does, the next section element is stored in the $currentSection variable. The stop(true) stops any animation I might have running but for now it doesn't apply. animate() includes scollTop
+            // After some time (allowing audio to play), check if another question exists. If it does, the next section element is stored in the $currentSection variable. The stop(true) stops any animation I might have running but for now it doesn't apply. Empty the checkbox input and scroll to the next question.
             setTimeout(function () {
                 if ($nextSection.length) {
                     // $currentSection = $nextSection;
@@ -216,82 +138,94 @@ $(function () {
             }, 1000);
         }
     });
-    // ========================
+};
 
-    // ========================
-    // Soundboard Buttons
+// Choppa Soundboard Button
+arnieApp.choppaAudioButton = function () {
     $('.choppa-button').on('click', function (e) {
         e.preventDefault();
         $('.arnold-response-audio').attr('src', './assets/audio/quotes/choppa.mp3')[0].play();
     });
+};
 
+// Running Man Soundboard Button
+arnieApp.runningManAudioButton = function () {
     $('.zero-button').on('click', function (e) {
         e.preventDefault();
         $('.arnold-response-audio').attr('src', './assets/audio/quotes/butIHopeYouLeaveEnoughRoomForMyFist.mp3')[0].play();
     });
-    // ========================
+};
 
-    // ========================
-    // Game Results
-    // ==Display Buttons==
-    const displayResultsButtons = () => {
-        const $playAgain = $('<a>').attr({
-            class: "button-play-again button-prim",
-            href: "#question1"
-        }).text("Play Again!");
+// Game Results: HTML for the Play Again button
+arnieApp.playAgain = $('<a>').attr({
+    class: "button-play-again button-prim",
+    href: "#question1"
+}).text("Play Again!");
 
-        const $giveUp = $('<a>').attr({
-            class: "button-give-up button-prim",
-            href: "#"
-        }).text("Give Up");
+// Game Results: HTML for the Give Up button
+arnieApp.giveUp = $('<a>').attr({
+    class: "button-give-up button-prim",
+    href: "#"
+}).text("Give Up");
 
-        const $poker = $('<a>').attr({
-            class: "button-poker button-prim",
-            href: "#"
-        }).text("Play Online Poker");
+// Game Results: Function to append Results Buttons to HTML
+arnieApp.displayResultsButtons = () => {
+    $('.play-again-buttons-container').append(arnieApp.playAgain, arnieApp.giveUp);
+};
 
-        $('.play-again-buttons-container').append($playAgain, $giveUp);
-    };
-
+// On button click, display results buttons and text with associated audio
+arnieApp.displayResults = function () {
     $('.results-button').on('click', function (e) {
         e.preventDefault();
         $('.play-again-buttons-container').empty();
-        // Results - Put text and maybe image on page. Play final audio
-        if (userPoints >= 9) {
-            $('.results-text').text(`"Well done! You terminated this game by answering ${userPoints} questions correctly."`);
+        if (arnieApp.userPoints >= 9) {
+            $('.results-text').text(`"Well done! You terminated this game by answering ${arnieApp.userPoints} questions correctly."`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/illBeBack.mp3')[0].play();
-        } else if (userPoints < 9 && userPoints >= 5) {
-            $('.results-text').text(`Not bad! You answered ${userPoints} questions correctly. Watch five more 80s action movie montages and try again.`);
+        } else if (arnieApp.userPoints < 9 && arnieApp.userPoints >= 5) {
+            $('.results-text').text(`Not bad! You answered ${arnieApp.userPoints} questions correctly. Watch five more 80s action movie montages and try again.`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/illBeBack.mp3')[0].play();
-        } else if (userPoints === 1) {
-            $('.results-text').text(`You're a puny weakling with ${userPoints} correct answer! Keep training and try again.`);
+        } else if (arnieApp.userPoints === 1) {
+            $('.results-text').text(`You're a puny weakling with ${arnieApp.userPoints} correct answer! Keep training and try again.`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/lack-discipline.wav')[0].play();
         } else {
-            $('.results-text').text(`"You're a puny weakling with ${userPoints} correct answers! Keep training and try again."`);
+            $('.results-text').text(`"You're a puny weakling with ${arnieApp.userPoints} correct answers! Keep training and try again."`);
             $('.arnold-response-audio').attr('src', './assets/audio/game-results/lack-discipline.wav')[0].play();
         }
-        displayResultsButtons();
+        arnieApp.displayResultsButtons();
     });
-    // ==Results Buttons Functionality==
+};
+
+// Results Buttons Functionality: Play audio when clicking button to give up
+arnieApp.giveUpButton = function () {
     $('.play-again-buttons-container').on('click', '.button-give-up', function (e) {
         e.preventDefault();
-        const randomQuitAudio = randomArrayValue(quitGameAudio);
+        const randomQuitAudio = arnieApp.randomArrayValue(arnieApp.quitGameAudio);
         $('.arnold-response-audio').attr('src', randomQuitAudio)[0].play();
     });
+};
 
+// Results Buttons Functionality: Reset the game when clicking to play again
+arnieApp.playAgainButton = function () {
     $('.play-again-buttons-container').on('click', '.button-play-again', function (e) {
-        // Set image attribute to default neutral face image
-        // $('.arnold-head-image').attr('src', './assets/arnold-face/neutral-face.png');
-        userPoints = 0;
+        arnieApp.userPoints = 0;
         $('.results-text').text("");
         $('.button-give-up').detach();
         $('.button-play-again').detach();
         $('.button-poker').detach();
     });
+};
 
-    $('.play-again-buttons-container').on('click', '.button-poker', function (e) {
-        e.preventDefault();
-        $('.arnold-response-audio').attr('src', './assets/audio/poker/iDontPlayThatGame.mp3')[0].play();
-    });
+arnieApp.init = function () {
+    arnieApp.pageLoad();
+    arnieApp.mainButtonSubmit();
+    arnieApp.choppaAudioButton();
+    arnieApp.runningManAudioButton();
+    arnieApp.displayResults();
+    arnieApp.giveUpButton();
+    arnieApp.playAgainButton();
+};
+
+$(function () {
+    arnieApp.init();
 });
 

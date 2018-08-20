@@ -1,0 +1,64 @@
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: $font-prim;
+    color: $colour-prim;
+}
+
+.main {
+    background-color: $colour-body;
+}
+// ==Wrappers STARTS==
+.wrapper-prim {
+    max-width: 1440px;
+    margin: 0 auto;
+}
+
+.wrapper-sec {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+// ==Wrappers ENDS==
+
+// ==Buttons STARTS==
+.button-sound,
+.button-prim {
+    border-radius: 5px;
+    text-decoration: none;
+    color: $colour-sec;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: $font-sec;
+    letter-spacing: 2px;
+    font-weight: 400;
+}
+
+.button-prim {
+    background: linear-gradient(to bottom, rgb(255, 160, 111), $colour-third);
+    padding: 15px 35px;
+    font-size: 2rem;
+    transition: all 0.1s;
+}
+
+.button-sound {
+    background: linear-gradient(to bottom, rgb(99, 99, 99), $colour-prim);
+    padding: 10px 25px;
+    font-size: 1.5rem;
+    transition: all 0.1s;
+}
+
+.button-prim:hover,
+.button-sound:hover {
+    box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+    transform: scale(1.05);
+}
+
+.button-prim:active,
+.button-sound:active {
+    box-shadow: 0 10px 10px -15px rgba(0, 0, 0, 0.5);
+    transform: scale(1);
+}
+// ==Buttons ENDS==
