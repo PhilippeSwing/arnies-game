@@ -5,6 +5,7 @@ html {
 body {
     font-family: $font-prim;
     color: $colour-prim;
+    overflow-y: hidden;
 }
 
 .main {
