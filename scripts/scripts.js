@@ -226,6 +226,8 @@ arnieApp.init = function () {
 };
 
 $(function () {
+    // Scroll to top on page load
+    $(this).scrollTop(0);
     arnieApp.init();
 });
 
