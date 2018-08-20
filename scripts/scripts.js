@@ -75,7 +75,7 @@ arnieApp.mainButtonSubmit = function () {
             $('.arnold-response-audio').animate({ volume: 0 }, 1500);
             $('.explosion-audio').animate({ volume: 0 }, 1500);
             setTimeout(function () {
-                $('.video-header').fadeIn(900).removeClass('hide').attr('autoplay', true); // .get(0).play();
+                $('.video-header').fadeIn(900).removeClass('hide').attr('autoplay', true);
                 $('.header-image').css('display', 'none').fadeOut(900);
             }, 1500)
             // After the video is done plying, display the sticky Arnold image and scroll to the first question
@@ -84,7 +84,7 @@ arnieApp.mainButtonSubmit = function () {
                     display: 'inline',
                     transform: 'translateX(0)'
                 });
-                $('.video-header').addClass('hide').fadeOut(1500);  // .pause().attr('currentTime', 0);
+                $('.video-header').addClass('hide').fadeOut(1500);
 
                 let $currentSection = $(this).parents('.scroll-section');
                 // Store the next question's section element in a variable
@@ -126,7 +126,6 @@ arnieApp.mainButtonSubmit = function () {
             // After some time (allowing audio to play), check if another question exists. If it does, the next section element is stored in the $currentSection variable. The stop(true) stops any animation I might have running but for now it doesn't apply. Empty the checkbox input and scroll to the next question.
             setTimeout(function () {
                 if ($nextSection.length) {
-                    // $currentSection = $nextSection;
                     $('html, body').stop(true).animate({
                         scrollTop: $nextSection.offset().top
                     }, 1500);
