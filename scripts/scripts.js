@@ -231,8 +231,16 @@ arnieApp.init = function () {
 };
 
 $(function () {
-    // Scroll to top on page load
-    $(this).scrollTop(0);
-    arnieApp.init();
+    // Alert about Chrome issue
+    if (navigator.userAgent.search("Chrome") >= 0) {
+        alert(`Due to Chrome's new video and audio policy as of April 2018, this site is best viewed in other browsers.`)
+        // Scroll to top on page load
+        $(this).scrollTop(0);
+        arnieApp.init();
+    } else {
+        // Scroll to top on page load
+        $(this).scrollTop(0);
+        arnieApp.init();
+    }
 });
 
