@@ -56,9 +56,9 @@ arnieApp.pageLoad = function () {
         $('.explosion-audio')[0].play();
     }, 15000);
 
-    setTimeout(function () {
-        $('.header-content-container, .header-image').effect('shake', 500);
-    }, 15200);
+    // setTimeout(function () {
+    //     $('.header-content-container, .header-image').effect('shake', 500);
+    // }, 15200);
 };
 
 // Random Array Value
