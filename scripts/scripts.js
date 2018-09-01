@@ -64,6 +64,7 @@ arnieApp.pageLoad = function () {
     // setTimeout(function () {
     //     $('.header-content-container, .header-image').effect('shake', 500);
     // }, 15200);
+    // Blah
 };
 
 // Random Array Value
