@@ -48,12 +48,7 @@ arnieApp.quitGameAudio = [
 
 arnieApp.pageLoad = function () {
     // Song on page load
-    let isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
-    if (!isChrome) {
-        $('#iframeAudio').remove()
-    }
-
-    const finalCountdownAudio = $(`<audio src="./assets/audio/pageLoad/countdown-edit.mp3" class="final-countdown-audio" id="playAudio"></audio>`);
+    const finalCountdownAudio = $(`<audio src="./assets/audio/pageLoad/countdown-edit.mp3" class="final-countdown-audio"></audio>`);
     $('.final-countdown-audio-container').append(finalCountdownAudio);
     $('.final-countdown-audio').get(0).play();
     // Explosion on page load
@@ -61,21 +56,15 @@ arnieApp.pageLoad = function () {
         $('.explosion-audio')[0].play();
     }, 15000);
 
-    // setTimeout(function () {
-    //     $('.header-content-container, .header-image').effect('shake', 500);
-    // }, 15200);
-    // Blah
+    setTimeout(function () {
+        $('.header-content-container, .header-image').effect('shake', 500);
+    }, 15200);
 };
 
 // Random Array Value
 arnieApp.randomArrayValue = (array) => {
     return array[Math.floor(Math.random() * array.length)];
 }
-
-// let startButton = document.getElementsByClassName('start-game-button');
-// startButton.addEventListener("click", function () {
-//     document.getElementById("iframeAudio").muted = true;
-// });
 
 // Start Game and Question Submit Buttons
 arnieApp.mainButtonSubmit = function () {
@@ -86,9 +75,6 @@ arnieApp.mainButtonSubmit = function () {
         if ($(this).hasClass('start-game-button')) {
             // Remove explosion sound and shake effect if the user clicks to start before they happen
             $('.final-countdown-audio').animate({ volume: 0 }, 1500);
-            // $('#iframeAudio').animate({ volume: 0 }, 1500);
-            // let iframeElement = document.getElementById('iframeAudio');
-            // iframeElement.volume = 0;
             $('.explosion-audio').animate({ volume: 0 }, 1500);
             setTimeout(function () {
                 const arnieVideo = $(`<video class="video-header hide" width="100%" src="./assets/videos/bunch-of-questions.mp4" fullscreen>
