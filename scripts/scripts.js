@@ -47,7 +47,6 @@ arnieApp.quitGameAudio = [
 ]
 
 arnieApp.pageLoad = function () {
-    // Song on page load
     const finalCountdownAudio = $(`<audio src="./assets/audio/pageLoad/countdown-edit.mp3" class="final-countdown-audio"></audio>`);
     $('.final-countdown-audio-container').append(finalCountdownAudio);
     $('.final-countdown-audio').get(0).play();
@@ -73,17 +72,18 @@ arnieApp.mainButtonSubmit = function () {
         // START GAME BUTTON CLICK
         // Cutoff page load audio and play intro video
         if ($(this).hasClass('start-game-button')) {
-            // Remove explosion sound and shake effect if the user clicks to start before they happen
-            $('.final-countdown-audio').animate({ volume: 0 }, 1500);
-            $('.explosion-audio').animate({ volume: 0 }, 1500);
+            // **COMMENTED OPENING AUDIO VIDEO DUE TO CHROME'S NEW AUTOPLAY POLICY**
+            // Remove explosion sound and Final Countdown if the user clicks to start before they happen
+            // $('.final-countdown-audio').animate({ volume: 0 }, 1500);
+            // $('.explosion-audio').animate({ volume: 0 }, 1500);
             setTimeout(function () {
-                const arnieVideo = $(`<video class="video-header hide" width="100%" src="./assets/videos/bunch-of-questions.mp4" fullscreen>
-                    Your browser does not support the video element.
-                </video>`);
-                $('.arnie-video-container').append(arnieVideo);
-                $('.video-header').fadeIn(900).removeClass('hide').attr('autoplay', true);
+                // const arnieVideo = $(`<video class="video-header hide" width="100%" src="./assets/videos/bunch-of-questions.mp4" fullscreen>
+                //     Your browser does not support the video element.
+                // </video>`);
+                // $('.arnie-video-container').append(arnieVideo);
+                $('.video-header').fadeIn(900).removeClass('hide').get(0).play();
                 $('.header-image').css('display', 'none').fadeOut(900);
-            }, 1500)
+            }, 500)
             // After the video is done plying, display the sticky Arnold image and scroll to the first question
             setTimeout(function () {
                 $('.header-image').fadeIn(900).css({
@@ -221,7 +221,8 @@ arnieApp.playAgainButton = function () {
 };
 
 arnieApp.init = function () {
-    arnieApp.pageLoad();
+    // **COMMENTED OPENING AUDIO DUE TO CHROME'S NEW AUTOPLAY POLICY**
+    // arnieApp.pageLoad();
     arnieApp.mainButtonSubmit();
     arnieApp.choppaAudioButton();
     arnieApp.runningManAudioButton();
@@ -232,15 +233,15 @@ arnieApp.init = function () {
 
 $(function () {
     // Alert about Chrome issue
-    if (navigator.userAgent.search("Chrome") >= 0) {
-        alert(`Due to Chrome's new video and audio policy as of April 2018, this site is best viewed in other browsers.`)
-        // Scroll to top on page load
-        $(this).scrollTop(0);
-        arnieApp.init();
-    } else {
-        // Scroll to top on page load
-        $(this).scrollTop(0);
-        arnieApp.init();
-    }
+    // if (navigator.userAgent.search("Chrome") >= 0) {
+    //     alert(`Due to Chrome's new video and audio policy as of April 2018, this site is best viewed in other browsers.`)
+    // Scroll to top on page load
+    //     $(this).scrollTop(0);
+    //     arnieApp.init();
+    // } else {
+    // Scroll to top on page load
+    $(this).scrollTop(0);
+    arnieApp.init();
+    // }
 });
 
