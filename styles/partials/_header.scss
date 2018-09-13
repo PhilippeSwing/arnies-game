@@ -76,7 +76,7 @@
 }
 
 .header-image {
-    animation: arnie-image 1.4s linear;
+    animation: arnie-image 0.7s linear;
 }
 // ====Header Text====
 @keyframes header-text {
@@ -90,11 +90,11 @@
 
 .game-header {
     animation:  header-text 0.2s linear;
-    animation-delay: 3.2s;
+    animation-delay: .7s;
     animation-fill-mode: forwards;
 }
 // ====Header Button====
-@keyframes header-button {
+@keyframes header-button-move {
     0% {
         bottom: -500px;
     }
@@ -103,9 +103,23 @@
     }
 }
 
+@keyframes header-button-pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
 .start-game-button {
-    animation:  header-button 0.2s linear;
-    animation-delay: 5.2s;
+    animation:  header-button-move 0.2s linear, header-button-pulse 1s infinite;
+    animation-delay: 1.7s;
     animation-fill-mode: forwards;
 }
 // ==Header Animation ENDS==

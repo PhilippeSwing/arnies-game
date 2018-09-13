@@ -47,9 +47,9 @@ arnieApp.quitGameAudio = [
 ]
 
 arnieApp.pageLoad = function () {
-    const finalCountdownAudio = $(`<audio src="./assets/audio/pageLoad/countdown-edit.mp3" class="final-countdown-audio"></audio>`);
-    $('.final-countdown-audio-container').append(finalCountdownAudio);
-    $('.final-countdown-audio').get(0).play();
+    // const finalCountdownAudio = $(`<audio src="./assets/audio/pageLoad/countdown-edit.mp3" class="final-countdown-audio"></audio>`);
+    // $('.final-countdown-audio-container').append(finalCountdownAudio);
+    // $('.final-countdown-audio').get(0).play();
     // Explosion on page load
     setTimeout(function () {
         $('.explosion-audio')[0].play();
@@ -59,6 +59,12 @@ arnieApp.pageLoad = function () {
     //     $('.header-content-container, .header-image').effect('shake', 500);
     // }, 15200);
 };
+
+// arnieApp.pageHoverAudio = function () {
+//     $(this).hover(function () {
+//         $('.final-countdown-audio').get(0).play();
+//     })
+// }
 
 // Random Array Value
 arnieApp.randomArrayValue = (array) => {
@@ -223,6 +229,7 @@ arnieApp.playAgainButton = function () {
 arnieApp.init = function () {
     // **COMMENTED OPENING AUDIO DUE TO CHROME'S NEW AUTOPLAY POLICY**
     // arnieApp.pageLoad();
+    // arnieApp.pageHoverAudio();
     arnieApp.mainButtonSubmit();
     arnieApp.choppaAudioButton();
     arnieApp.runningManAudioButton();
